@@ -20,11 +20,11 @@ description: sharing some stuff i think i know;
 google_measurement_id: G-XGHWEETRM7
 baseurl: / # the subpath of your site, e.g. /blog
 url: https://functionsandglory.github.io # the base hostname & protocol for your site, e.g. http://example.com
-logo: /images/fg-logo-badge.png
+logo: /images/f&g-badge-logo-2.png
 
 author:
   name: Mr. F
-  picture: /images/robot-avatar.png
+  picture: /images/f&g-avatar-2.png
   email:
   twitter: FuncsAndGlory
   links:
@@ -52,7 +52,7 @@ footer_links:
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/so-simple-theme@3.2.0
-skin: "/assets/css/skins/custom.css"
+skin: /assets/css/skins/custom.css
 plugins:
   - jekyll-feed
 
