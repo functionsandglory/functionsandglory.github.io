@@ -15,15 +15,14 @@ I have been an engineer, a tech lead, a manager, back to an engineer, back to a 
 
 I have helped build an engineering department from 2 to 60+.
 
-I have helped craft engineering hiring processes, run technical interviews, and onboard dozens of engineers.
+I have helped craft engineering hiring processes, run technical interviews, and onboarded dozens of engineers.
 
-I have introduced and taught Agile methodology to my teams, run 100s of sprints, and deliver dozens of projects on time.
+I have introduced and taught Agile methodology to my teams, run 100s of sprints, and delivered dozens of projects on time.
 
 I have seen the good, the bad, the ugly, and the insane, of life in a fast growling startup.
 
-When I was younger, I joined my first Saas startup for "Fortune & Glory", to quote the great Indiana Jones.
+When I was younger, I joined my first SaaS startup for "Fortune & Glory", to quote the great Indiana Jones.
 
 ![Fortune & Glory](/images/indyj-f&g.gif)
 
 While I may not have found fortune or glory yet, I stay for the adventure.
-
