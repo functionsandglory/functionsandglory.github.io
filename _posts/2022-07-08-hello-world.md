@@ -3,7 +3,7 @@ layout: post
 title:  "hello world;"
 date:   2022-07-08 19:58:04 -0700
 ---
-Hello world, I'm Mr. F! [🔈](https://www.youtube.com/watch?v=HVIdy9_wqQw)
+Hello world, I'm Mr. F! [🔈](https://www.youtube.com/watch?v=HVIdy9_wqQw){:target="_blank"}
 
 I have spent the last 10 years working and growing professionally in SaaS startups in and around the Silicon Valley area. The companies I have been a part of have raised over $160M of VC capital between them.
 
