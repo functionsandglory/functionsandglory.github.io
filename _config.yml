@@ -20,7 +20,7 @@ description: sharing some stuff i think i know;
 google_measurement_id: G-XGHWEETRM7
 baseurl: / # the subpath of your site, e.g. /blog
 url: https://functionsandglory.github.io # the base hostname & protocol for your site, e.g. http://example.com
-logo: /images/f&g-badge-logo.png
+logo: /images/fg-badge-logo.png
 
 author:
   name: Mr. F
