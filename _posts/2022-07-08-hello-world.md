@@ -23,4 +23,4 @@ When I was younger and naive, I joined my first SaaS startup in search of, to qu
 
 ![Fortune & Glory](/images/indyj-f&g.gif)
 
-Now, I'm just here for the adventure. :mountain:
+Now, I'm just here for the adventure :mountain:
