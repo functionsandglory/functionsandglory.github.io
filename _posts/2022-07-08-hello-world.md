@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  hello world; :wave:
+title:  hello world;
 date:   2022-07-08
 ---
 Hello world, I'm [Mr. F!](https://www.youtube.com/watch?v=HVIdy9_wqQw){:target="_blank"} :wave:
