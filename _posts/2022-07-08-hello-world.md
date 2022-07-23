@@ -17,7 +17,7 @@ I have helped craft engineering hiring processes, ran many technical interviews,
 
 I have introduced and taught Agile methodology to my teams, ran 100s of sprints, and delivered dozens of projects on time.
 
-I have seen the good, the bad, the ugly, and the insane, of life inside a fast growling startup.
+I have seen the good, the bad, the ugly, and the insane, of life inside a fast-growing startup.
 
 When I was younger and naive, I joined my first SaaS startup in search of, to quote the great Indiana Jones, "Fortune & Glory".
 
