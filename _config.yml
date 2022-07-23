@@ -55,6 +55,7 @@ remote_theme: mmistakes/so-simple-theme@3.2.0
 skin: /assets/css/skins/custom.css
 plugins:
   - jekyll-feed
+  - jemoji
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

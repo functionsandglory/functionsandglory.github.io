@@ -43,3 +43,4 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 # Custom
 gem "github-pages", group: :jekyll_plugins
 gem "webrick"
+gem 'jemoji'
