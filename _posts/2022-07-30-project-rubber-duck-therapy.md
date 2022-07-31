@@ -2,8 +2,7 @@
 layout: post
 title:  "Project: Rubber Duck Therapy"
 date:   2022-07-30
-categories:
-    - Projects
+category: Projects
 ---
 
 I wanted to take a break from my other longer term projects and have some fun.
@@ -12,7 +11,7 @@ So I needed to come up with a "hackathon" project that would let me keep my Reac
 
 I decided to build a "rubber duck" themed Eliza style chatbot.
 
-The Eliza algorithm is very simple. It simply takes the sentence provided by the user, restructures it, often as a question, and "messages" back. While primative by today's standards, at the time in the 1960's, many users were convinced of Eliza's intelligence.
+The [Eliza algorithm](https://en.wikipedia.org/wiki/ELIZA) is very simple. It simply takes the sentence provided by the user, restructures it, often as a question, and "messages" back. While primative by today's standards, at the time in the 1960's, many users were convinced of Eliza's intelligence.
 
 [Rubber duck debugging](https://en.wikipedia.org/wiki/ELIZA) is the method of debugging code or problem-solving by describing the issue in spoken or written language to an inanimate object. The theory is that simply the act of describing the problem outside your mind, even to a person or thing that knows nothing about the subject, can trigger the insight you need.
 
