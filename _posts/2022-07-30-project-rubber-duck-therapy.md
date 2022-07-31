@@ -20,6 +20,4 @@ Rubber duck debugging and Eliza seemed like a perfect combination!
 
 I am pretty happy with the end result. I have never had the opportunity to build a chat/messaging UI before, which was a nice change of pace. Next.js and Vercel were incredibly easy to work with. I loved not needing to mess around with Webpack and having painless hosting and deploys out of the box.
 
-Come try debugging a problem!
-
-[![Rubber duck therapist](/images/therapist-rubber-duck.png)](https://rubberducktherapist.app)
+[Come try debugging a problem!](https://rubberducktherapist.app)
