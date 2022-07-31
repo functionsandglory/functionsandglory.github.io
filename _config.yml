@@ -27,7 +27,7 @@ tag_archive_path: "/tags/"
 author:
   name: Mr. F
   picture: /images/f&g-avatar-2.png
-  email:
+  email: functionsandglory@proton.me
   twitter: FuncsAndGlory
   links:
     - title: Twitter
@@ -57,6 +57,7 @@ remote_theme: mmistakes/so-simple-theme@3.2.0
 skin: /assets/css/skins/custom.css
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
   - jemoji
 
 # Exclude from processing.
