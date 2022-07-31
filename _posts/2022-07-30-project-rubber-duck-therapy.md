@@ -8,7 +8,7 @@ categories:
 ---
 I wanted to take a break from my other longer term projects and have some fun.
 
-So I needed to come up with a personal hackathon project that would let me keep my React skills up to date (day job is Vue.js) and try out Next.js and Vercel.
+So I needed to come up with a personal hackathon project that would let me keep my React skills up to date (day job is Vue.js) and try out Next.js and Vercel (on my wish list).
 
 I decided to build a "rubber duck" themed Eliza style chatbot.
 
@@ -22,6 +22,6 @@ I am pretty happy with the end result. I have never had the opportunity to build
 
 ![Dr. Quack](/images/rubber-duck-therapist-sm.png){: .align-left}
 
-Please, go meet Dr. Bill Quack. He will dutifully lend his ear to you at any hour, night or day!
+Please, go chat with Dr. Bill Quack. He will dutifully lend you his ear at any hour, night or day!
 
-[Come try debugging a problem!](https://rubberducktherapy.app){:target="_blank"}
+[The doctor will see you now.](https://rubberducktherapy.app){:target="_blank"}
