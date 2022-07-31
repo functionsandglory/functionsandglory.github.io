@@ -21,6 +21,8 @@ google_measurement_id: G-XGHWEETRM7
 baseurl: / # the subpath of your site, e.g. /blog
 url: https://functionsandglory.github.io # the base hostname & protocol for your site, e.g. http://example.com
 logo: /images/fg-badge-logo.png
+category_archive_path: "/categories/"
+tag_archive_path: "/tags/"
 
 author:
   name: Mr. F
