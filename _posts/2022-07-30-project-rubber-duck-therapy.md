@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Project: Rubber Duck Therapy
+title:  "Project: Rubber Duck Therapy"
 date:   2022-07-30
 categories:
     - Projects
