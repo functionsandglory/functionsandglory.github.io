@@ -8,7 +8,7 @@ categories:
 ---
 I wanted to try out Next.js and Vercel to see what all the cool kids were talking about. A secondary goal was to keep my React skills up to date since my day job keeps me in Vue world.
 
-I first needed a thing to build. I didn't have an appetite for a big project, but I wanted to do something different from the classic Todo app. 
+I first needed a thing to build. I didn't have an appetite for a big project, but I wanted to do something different from the classic starter ToDo app. 
 
 I decided to build an Eliza chatterbot themed as "rubber duck debugging".
 
@@ -18,7 +18,7 @@ The [Eliza algorithm](https://en.wikipedia.org/wiki/ELIZA) is a simple and naive
 
 Turns out, Eliza and rubber duck debugging are the perfect combo for a chatterbot project, IMO.
 
-So please, go chat with Dr. Bill Quack. He will dutifully lend you his ear at any hour, night or day, free of charge!
+So please, go chat with Dr. Bill Quack. He will dutifully lend you his ear, at any hour, night or day, free of charge!
 
 ![Dr. Quack](/images/rubber-duck-therapist-sm.png)
 
