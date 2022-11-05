@@ -45,7 +45,9 @@ defaults:
       type: posts
     values:
       author_profile: true
-      comments: true
+      comments: false
+      read_time: true
+      share: false
 
 # Build settings
 include: [_pages]

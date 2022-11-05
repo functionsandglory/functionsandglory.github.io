@@ -1,27 +1,25 @@
 ---
 layout: single
 title: "Project: Rubber Duck Therapy"
-description: "Eliza and rubber duck debugging are the perfect combo for a quick chatbot hackathon project."
+description: "Eliza and rubber duck debugging are the perfect combo for a chatterbot project."
 date: 2022-07-30
 categories:
     - Projects
 ---
-I wanted to take a break from my other longer term projects and have some fun.
+I wanted to try out Next.js and Vercel to see what all the cool kids were talking about. A secondary goal was to keep my React skills up to date since my day job keeps me in Vue world.
 
-So I needed to come up with a personal hackathon project that would let me keep my React skills up to date (day job is Vue.js) and try out Next.js and Vercel (on my wish list).
+I first needed a thing to build. I didn't have an appetite for a big project, but I wanted to do something different from the classic Todo app. 
 
-I decided to build a "rubber duck" themed Eliza style chatbot.
+I decided to build an Eliza chatterbot themed as "rubber duck debugging".
 
-The [Eliza algorithm](https://en.wikipedia.org/wiki/ELIZA) is very simple. It simply takes the sentence provided by the user, restructures it, often as a question, and "messages" back. While primitive by today's standards, at the time in the 1960's many users were convinced of Eliza's intelligence.
+The [Eliza algorithm](https://en.wikipedia.org/wiki/ELIZA) is a simple and naive algorithm first created in the 1960's that takes a user's input and rephrases it back as a question to the user. The idea is to stimulate a conversation similar to how a therapist might.
 
-[Rubber duck debugging](https://en.wikipedia.org/wiki/ELIZA) is the method of debugging code or problem-solving by describing the issue in spoken or written language to an inanimate object. The theory is that simply the act of describing the problem outside your head, even to a person or thing that knows nothing about the subject, can trigger the insight needed.
+[Rubber duck debugging](https://en.wikipedia.org/wiki/ELIZA) is a method of debugging code or problem-solving by describing the issue in spoken or written language to an inanimate object. The theory is that simply the act of describing the problem outside your head, even to a person or thing that knows nothing about the subject, can trigger the insight needed.
 
-Rubber duck debugging and Eliza seemed like a perfect combination!
+Turns out, Eliza and rubber duck debugging are the perfect combo for a chatterbot project, IMO.
 
-I am pretty happy with the end result. I have never had the opportunity to build a chat/messaging UI before, which was a nice change of pace. Next.js and Vercel were incredibly easy to work with. I loved not needing to mess around with Webpack and having painless hosting and deploys out of the box.
+So please, go chat with Dr. Bill Quack. He will dutifully lend you his ear at any hour, night or day, free of charge!
 
-![Dr. Quack](/images/rubber-duck-therapist-sm.png){: .align-left}
-
-Please, go chat with Dr. Bill Quack. He will dutifully lend you his ear at any hour, night or day!
+![Dr. Quack](/images/rubber-duck-therapist-sm.png)
 
 [The doctor will see you now.](https://rubberducktherapy.app){:target="_blank"}
