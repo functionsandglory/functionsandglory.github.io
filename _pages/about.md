@@ -1,7 +1,7 @@
 ---
-layout: page
 title: About
 permalink: /about/
+layout: single
 ---
 Hello world, I'm [Mr. F!](https://www.youtube.com/watch?v=HVIdy9_wqQw){:target="_blank"} :wave:
 

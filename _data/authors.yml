@@ -1,0 +1,14 @@
+FG:
+  name        : "F.G."
+  bio         : "The primary instigator."
+  avatar      : "/images/fg-avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:functionsandglory@proton.me"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://functionsandglory.dev"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/funcsandglory"

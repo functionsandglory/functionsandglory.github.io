@@ -1,44 +1,25 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+google_measurement_id: G-XGHWEETRM7
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# site
 locale: en-us
 title: Functions & Glory
-email: functionsandglory@proton.me
+subtitle: sharing some stuff i think i know;
+name: F.G.
 description: sharing some stuff i think i know;
-google_measurement_id: G-XGHWEETRM7
-baseurl: / # the subpath of your site, e.g. /blog
-url: https://functionsandglory.github.io # the base hostname & protocol for your site, e.g. http://example.com
+url: https://functionsandglory.github.io
+baseurl: /
+repository: functionsandglory/functionsandglory.github.io
 logo: /images/fg-badge-logo.png
-category_archive_path: "/categories/"
-tag_archive_path: "/tags/"
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      author_profile: true
 
-author:
-  name: Mr. F
-  picture: /images/f&g-avatar-2.png
-  email: functionsandglory@proton.me
-  twitter: FuncsAndGlory
-  links:
-    - title: Twitter
-      url: https://twitter.com/FuncsAndGlory
-      icon: fab fa-twitter-square
-    - title: GitHub
-      url: https://github.com/functionsandglory
-      icon: fab fa-github-square
-    - title: Email
-      url: mailto:functionsandglory@proton.me
-      icon: fas fa-envelope-square
+# theme
+minimal_mistakes_skin: dark
 
 footer_links:
   - title: Twitter
@@ -52,22 +33,8 @@ footer_links:
     icon: fas fa-envelope-square
 
 # Build settings
+include: ["_pages"]
 markdown: kramdown
-remote_theme: mmistakes/so-simple-theme@3.2.0
-skin: /assets/css/skins/custom.css
+remote_theme: mmistakes/minimal-mistakes@4.24.0
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jemoji
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  - jekyll-include-cache
