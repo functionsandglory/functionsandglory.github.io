@@ -1,8 +1,7 @@
 ---
-layout: posts
+layout: single
 title: "Project: Rubber Duck Therapy"
 description: "Eliza and rubber duck debugging are the perfect combo for a quick chatbot hackathon project."
-author: FG
 date: 2022-07-30
 categories:
     - Projects

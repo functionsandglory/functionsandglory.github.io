@@ -1,40 +1,56 @@
-google_measurement_id: G-XGHWEETRM7
-
-# site
 locale: en-us
 title: Functions & Glory
 subtitle: sharing some stuff i think i know;
-name: F.G.
+name: FG
 description: sharing some stuff i think i know;
 url: https://functionsandglory.github.io
 baseurl: /
 repository: functionsandglory/functionsandglory.github.io
 logo: /images/fg-badge-logo.png
+author:
+  name: F.G.
+  avatar: /images/fg-avatar.png
+  bio: Principal Software Engineer / Startup in CA
+  location: California, USA
+  links:
+    - label: Twitter
+      icon: fab fa-fw fa-twitter-square
+      url: https://twitter.com/funcsandglory
+    - label: GitHub
+      icon: fab fa-fw fa-github-square
+      url: https://github.com/functionsandglory
+    - label: Email
+      icon: fas fa-fw fa-envelope-square
+      url: mailto:functionsandglory@proton.me
+twitter:
+  username: funcsandglory
+og_image: /images/fg-badge-logo.png
+comments:
+  provider: disqus
+  disqus:
+    shortname: functionsandglory
+social:
+  name:  F.G.
+  links:
+    - https://twitter.com/funcsandglory
+    - https://github.com/functionsandglory
+analytics:
+  provider: google-gtag
+  google:
+    tracking_id: G-XGHWEETRM7
+minimal_mistakes_skin: dark
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
     values:
       author_profile: true
-
-# theme
-minimal_mistakes_skin: dark
-
-footer_links:
-  - title: Twitter
-    url: https://twitter.com/FuncsAndGlory
-    icon: fab fa-twitter-square
-  - title: GitHub
-    url: https://github.com/functionsandglory
-    icon: fab fa-github-square
-  - title: Email
-    url: mailto:functionsandglory@proton.me
-    icon: fas fa-envelope-square
+      comments: true
 
 # Build settings
-include: ["_pages"]
+include: [_pages]
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes@4.24.0
 plugins:
   - jekyll-include-cache
+  - jekyll-feed
