@@ -6,14 +6,11 @@ date: 2022-11-06
 categories:
 - Tutorials
 ---
+I do realize that this tutorial may not be very useful to a very many people as the problem only occurs when combined with a very specific set of technologies.
 
-# Introduction
+But for that maybe 1 person, this is for you!
 
-This title is a bit of a mouthful. Try saying it 10 times fast.
-
-I do realize that this tutorial may not be very useful to many people as the problem only occurs when combined with a very specific set of technologies.
-
-But for that maybe 1 person, this is for you.
+# Overview
 
 My requirements were basically this:
 
@@ -37,7 +34,7 @@ My core focus was using NestJS and I thought of deployment more as a detail. So 
 
 A key aspect of an NX integrated repo is that all projects within it share the same top level dependencies. So `package.json` and `node_modules` live at the root of the repo and not within the child projects.
 
-The fact stated above is important to understand because the Serverless Framework CLI expects executed be in the project root and by default expects a `serverless.yml` to be there as well.
+This fact is important to understand because the Serverless Framework CLI expects to be executed in the project root and expects a `serverless.yml` file to be there as well by default.
 
-Since this is a monorepo, we may have a different project that also wants to deploy via Serverless Framework with its own config. For that reason I tried to put the `serverless.yml` in the project's own directory and run the Serverless Framework CLI from there. For the reasons described above, it did not work, and I had to abandon that strategy.
+Since this is a monorepo, we may have a different project that also wants to deploy via Serverless Framework with its own config. For that reason, I initially tried to put the `serverless.yml` in the project's own directory and run the Serverless Framework CLI from there. But, for the reasons described previously, it did not work. So I had to abandon that strategy.
 
