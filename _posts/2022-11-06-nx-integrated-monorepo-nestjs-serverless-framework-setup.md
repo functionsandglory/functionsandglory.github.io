@@ -4,13 +4,13 @@ title: "Tutorial: NX Integrated Monorepo, NestJS in TypeScript, and Serverless F
 description: "How to get an NX integrated monorepo with NestJS in TypeScript deployed via Serverless Framework working."
 date: 2022-11-06
 categories:
-- Tutorials
+    - tutorials
 ---
 I wanted a quick, easy, and cheap way to deploy back-end apis in my monorepo setup. I decided to use NestJS for the backend api and Serverless Framework for deployment.
 
 This post explains how I got all the technology working together.
 
-#TLDR;
+# TLDR;
 
 Here is a [repo](https://github.com/functionsandglory/nestjs-serverless-monorepo-example) with examples of everything I will be describing below.
 
@@ -48,6 +48,8 @@ The rest of this post explains the steps I took to get it all working together.
 
 # Solution
 
+## Plugins
+
 We need to use two Serverless plugins to give Serverless Framework a little more smarts.
 
 * [Serverless Offline](https://www.npmjs.com/package/serverless-offline)
@@ -57,7 +59,20 @@ Serverless Offline is for local development. It spins up a local dev server that
 
 Serverless Bundle will bundle only the code your project needs including dependencies. This resolves the problem of Serverless bundling all your `node_modules` instead of just the ones your app uses.
 
-Serverless Bundle advertises a low-config "just works" experience. For the simple projects in my example repo, this proved to be true. Internally it uses [Serverless Webpack](https://www.npmjs.com/package/serverless-webpack) so you could opt to use that directly if you end up needing more advanced configs.
+Serverless Bundle advertises a low-config "just works" experience. For the simple projects in my example repo, this proved to be true. Internally it uses [Serverless Webpack](https://www.npmjs.com/package/serverless-webpack), so you could opt to use that directly if you end up needing more advanced configs.
+
+After installing the plugins we need, we can begin configuring our projects.
+
+## Configuring NestJS
+
+## Configuring Serverless Framework
+
+## Configuring NX
+
+# Notes
+My primary goal was to find a quick, cheap, and easy way to rapidly prototype and deploy a NestJS + NextJS stack, specifically in an integrated monorepo context.
+
+I do not know if the steps taken in this post will work for your needs. Please be aware of all the pros and cons when working with Serverless/AWS Lambda.
 
 # Future work
 Someday, I may try and convert what I did here into a NX code generator.

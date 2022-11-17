@@ -2,7 +2,7 @@
 title: Projects
 layout: category
 permalink: /categories/projects/
-taxonomy: Projects
+taxonomy: projects
 ---
 
 What I be making.

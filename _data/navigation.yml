@@ -4,5 +4,7 @@ main:
     url: /
   - title: Projects
     url: /categories/projects/
+  - title: Tutorials
+    url: /categories/tutorials/
   - title: About
     url: /about/

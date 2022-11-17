@@ -6,7 +6,7 @@ date: 2022-07-30
 header:
     image: /assets/posts/rubber-duck-therapy/rubber-duck-therapy-screen.png
 categories:
-    - Projects
+    - projects
 ---
 I wanted to try out Next.js and Vercel to see what all the cool kids were talking about. A secondary goal was to keep my React skills up to date since my day job keeps me in Vue world.
 
