@@ -4,7 +4,7 @@ title: "Project: Rubber Duck Therapy"
 description: "Eliza and rubber duck debugging are the perfect combo for a chatterbot project."
 date: 2022-07-30
 header:
-    og_image: /images/rubber-duck-therapist-sm.png
+    image: /assets/posts/rubber-duck-therapy/rubber-duck-therapy-screen.png
 categories:
     - Projects
 ---
@@ -22,6 +22,6 @@ Turns out, Eliza and rubber duck debugging are the perfect combo for a chatterbo
 
 So please, go chat with Dr. Bill Quack. He will dutifully lend you his ear, at any hour, night or day, free of charge!
 
-![Dr. Quack](/images/rubber-duck-therapist-sm.png)
+![Dr. Quack](/assets/posts/rubber-duck-therapy/rubber-duck-therapist.png){: style="height: 200px;"}
 
 [The doctor will see you now.](https://rubberducktherapy.app){:target="_blank"}

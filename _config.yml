@@ -6,10 +6,10 @@ description: sharing some stuff i think i know;
 url: https://functionsandglory.github.io
 baseurl: /
 repository: functionsandglory/functionsandglory.github.io
-logo: /images/fg-badge-logo.png
+logo: /assets/site/fg-badge-logo.png
 author:
   name: F.G.
-  avatar: /images/fg-avatar.png
+  avatar: /assets/site/fg-avatar.png
   bio: Principal Software Engineer / Startup in CA
   location: California, USA
   links:
