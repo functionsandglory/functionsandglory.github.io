@@ -28,17 +28,17 @@ A couple of other requirements were:
 
 - I wanted to have a local hot reload development server.
 - I wanted to run the local server and deploy to AWS via NX's task runner system.
-- I wanted a quick and repeatable flow to bootstrap and deploy an API quickly to prototype ideas.
+- I wanted a quick and repeatable flow to bootstrap and deploy an API to rapidly prototype ideas.
 
-One great thing about NX is their wide array of 1st and 3rd party code generators. For example, NX's first party NestJS generator bootstraps a new app quickly. There is also a [3rd party Serverless plugin]((https://github.com/Bielik20/nx-plugins/tree/master/packages/nx-serverless)) that generates an empty Serverless Framework app.
+One great thing about NX is their wide array of 1st and 3rd party code generators. For example, NX's first party NestJS generator bootstraps a new app quickly. There is also a [3rd party serverless plugin]((https://github.com/Bielik20/nx-plugins/tree/master/packages/nx-serverless)) that generates an empty Serverless Framework app.
 
-The problem? Both those packages assume a brand new empty state. I can not use one to amend the other.
+The problem? Both those plugins assume a brand new empty state. I can not use one to amend the other.
 
 My core focus was using NestJS and I thought of deployment more as a detail. So I opted to just use the NestJS code generator and manually amend it to be deployable via Serverless Framework rather than the inverse.
 
 # Problem
 
-A key aspect of an NX integrated repo is that all projects within it share the same top level dependencies. So `package.json` and `node_modules` live at the root of the repo and not within the child projects.
+A key aspect of an NX integrated repo is that all projects within it share the same top level dependencies. So `package.json` and `node_modules` live at the root of the repo and not within the child projects' directories.
 
 _This [page](https://nx.dev/concepts/integrated-vs-package-based) explains the differences between integrated and package based repos._
 
@@ -58,7 +58,7 @@ Internally NestJS uses Express. This handler simply exposes the internal Express
 
 `@vendia/serverless-express` is a utility package that maps serverless events into HTTP requests that Express understands.
 
-What's nice about a setup like this is that you can have a single serverless function run an entire app. This simplifies development and deployment, but at the cost of a potentially larger serverless function that could incur the classic serverless ["cold start"](https://www.serverless.com/blog/keep-your-lambdas-warm/) cost.
+What's nice about a setup like this is that you can have a single serverless function run an entire app. This simplifies development and deployment, but at the cost of a potentially larger serverless function that could incur the classic serverless ["cold start"](https://www.serverless.com/blog/keep-your-lambdas-warm/) price.
 
 Below is an example handler:
 
@@ -100,9 +100,11 @@ We need to use two Serverless plugins to give Serverless Framework a little more
 * [Serverless Offline](https://www.npmjs.com/package/serverless-offline)
 * [Serverless Bundle](https://www.npmjs.com/package/serverless-bundle)
 
-Serverless Offline is for local development. It spins up a local dev server that mimics the Lambda environment it will be deployed in. It also supports hot reloading.
+Serverless Offline is for local development. It spins up a local dev server that mimics the AWS Lambda environment it will be deployed in. It also supports hot reloading with a configuration change (see `custom.serverless-framework.reloadHandler` [here](#serverlessyml)).
 
 Serverless Bundle will bundle only the code your project needs including dependencies. This resolves the problem of Serverless Framework bundling all of your `node_modules` instead of just the ones your specific project uses.
+
+This plugin is also smart and is able to handle the location of the `node_modules` directory at the repo root instead of the project root with no configuration changes.
 
 Serverless Bundle advertises a low-config "just works" experience. For the simple projects in my example repo, this proved to be true. Internally it uses [Serverless Webpack](https://www.npmjs.com/package/serverless-webpack), so you could opt to use that directly if you end up needing more advanced configs.
 
@@ -112,7 +114,7 @@ Since we are operating in the context of a monorepo, we assume there will other 
 
 While we want each project to have flexibility with their own configuration, there will likely be common configuration between projects as well.
 
-To handle this case, there is a `serverless.base.yml` file at the root of the repo. Ours looks something like this:
+To handle this case, we introduce a `serverless.base.yml` file at the root of the repo. Ours looks something like this:
 
 ```yaml
 provider:
