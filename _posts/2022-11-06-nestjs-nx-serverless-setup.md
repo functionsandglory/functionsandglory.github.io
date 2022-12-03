@@ -42,7 +42,7 @@ A key aspect of an NX integrated repo is that all projects within it share the s
 
 _This [page](https://nx.dev/concepts/integrated-vs-package-based) explains the differences between integrated and package based repos._
 
-Serverless Framework is a bit naive out of the box. It expects to be executed in the repo's root where `package.json`, `node_modules`, and `serverless.yml` live. It will simply package all the repo's code, including `node_modules`, in its generated bundle.
+Serverless Framework is a bit naive out of the box. It expects to be executed in the repo's root where `package.json`, `node_modules`, and `serverless.yml` live. It will simply package all the repo's code, including the entire `node_modules`directory and irrelevant projects, in its generated bundle.
 
 You can see that there is some friction between the monorepo style I want and how Serverless Framework works.
 
