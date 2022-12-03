@@ -4,7 +4,7 @@ title: "Project: Rubber Duck Therapy"
 description: "Eliza and rubber duck debugging are the perfect combo for a chatterbot project."
 date: 2022-07-30
 header:
-    image: /assets/posts/rubber-duck-therapy/rubber-duck-therapy-screen.png
+    image: /assets/posts/rubber-duck-therapy/rubber-duck-therapy-header.png
 categories:
     - projects
 ---

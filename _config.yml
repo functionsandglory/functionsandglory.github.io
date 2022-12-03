@@ -6,9 +6,9 @@ description: sharing some stuff i think i know;
 url: https://functionsandglory.github.io
 baseurl: /
 repository: functionsandglory/functionsandglory.github.io
-logo: /assets/site/fg-badge-logo.png
+logo: /assets/site/fg-badge-logo-light.png
 author:
-  name: F.G.
+  name: FG
   avatar: /assets/site/fg-avatar.png
   bio: Principal Software Engineer / Startup in CA
   location: California, USA
@@ -25,12 +25,8 @@ author:
 twitter:
   username: funcsandglory
 og_image: /images/fg-badge-logo.png
-comments:
-  provider: disqus
-  disqus:
-    shortname: functionsandglory
 social:
-  name:  F.G.
+  name:  FG
   links:
     - https://twitter.com/funcsandglory
     - https://github.com/functionsandglory
