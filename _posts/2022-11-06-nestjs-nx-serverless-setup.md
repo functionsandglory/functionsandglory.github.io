@@ -60,8 +60,7 @@ Internally NestJS uses Express. This handler simply exposes the internal Express
 
 What's nice about a setup like this is that you can have a single serverless function run an entire app. This simplifies development and deployment, but at the cost of a potentially larger serverless function that could incur the classic serverless ["cold start"](https://www.serverless.com/blog/keep-your-lambdas-warm/) price.
 
-Below is an example handler:
-
+### Handler Example
 ```ts
 /* Serverless Framework handler */
 
@@ -100,7 +99,7 @@ We need to use two Serverless plugins to give Serverless Framework a little more
 * [Serverless Offline](https://www.npmjs.com/package/serverless-offline)
 * [Serverless Bundle](https://www.npmjs.com/package/serverless-bundle)
 
-Serverless Offline is for local development. It spins up a local dev server that mimics the AWS Lambda environment it will be deployed in. It also supports hot reloading with a configuration change (see `custom.serverless-framework.reloadHandler` [here](#serverlessyml)).
+Serverless Offline is for local development. It spins up a local dev server that mimics the AWS Lambda environment it will be deployed in. It also supports hot reloading with a configuration change (see `custom.serverless-offline.reloadHandler` [here](#serverlessbaseyml-example)).
 
 Serverless Bundle will bundle only the code your project needs including dependencies. This resolves the problem of Serverless Framework bundling all of your `node_modules` instead of just the ones your specific project uses.
 
@@ -114,8 +113,9 @@ Since we are operating in the context of a monorepo, we assume there will other 
 
 While we want each project to have flexibility with their own configuration, there will likely be common configuration between projects as well.
 
-To handle this case, we introduce a `serverless.base.yml` file at the root of the repo. Ours looks something like this:
+To handle this case, we will introduce a `serverless.base.yml` file at the root of the repo.
 
+#### serverless.base.yml Example
 ```yaml
 provider:
   name: aws
@@ -142,8 +142,9 @@ custom:
 
 *(You probably noticed the scary looking* `ignorePackages` *block. Basically, packages that are either native to Node.js or incompatible with Webpack should be ignored. This Github [issue](https://github.com/nestjs/nest/issues/1706) explains why these specific packages were ignored.)*
 
-Then in each respective project, we would have a `serverless.yml` file that looks something like this:
+Then in each respective project, we would have a `serverless.yml` file.
 
+#### serverless.yml Example
 ```yaml
 service: example-api-1
 
@@ -175,10 +176,9 @@ In the example above we are using the ability to reference external YAML files d
 
 Now that we have Serverless Framework configured with our NestJS handlers, we need to wire up some NX targets to actually run our Serverless Framework commands in NX's task runner system.
 
-We will replace the `serve` target that was generated with NestJS and introduce a new `deploy` target.
+We will replace the `serve` target that was generated with NestJS and introduce a new `deploy` target in each project's `project.json`.
 
-In each project's `project.json` modify the `targets` object to look something like this:
-
+### project.json Example
 ```json
 {
  ...
