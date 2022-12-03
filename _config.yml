@@ -35,6 +35,7 @@ analytics:
   google:
     tracking_id: G-XGHWEETRM7
 minimal_mistakes_skin: dark
+permalink: /:categories/:year/:month/:day/:title
 defaults:
   - scope:
       path: ""
