@@ -12,6 +12,8 @@ I wanted a cheap, quick, and easy way to deploy backend apis in a monorepo setup
 
 This post explains the technology chosen and how I wired it all together.
 
+Some knowledge of [NX](https://nx.dev/getting-started/intro), [NestJS](https://docs.nestjs.com/), and [Serverless Framework](https://www.serverless.com/framework/docs) would be helpful, but not required.
+
 # TLDR;
 
 Here is a [repo](https://github.com/functionsandglory/nestjs-nx-serverless-example) with examples of everything I will be describing below.
@@ -30,7 +32,7 @@ A couple of other requirements were:
 - I wanted to run the local server and deploy to AWS via NX's task runner system.
 - I wanted a quick and repeatable flow to bootstrap and deploy an API to rapidly prototype ideas.
 
-One great thing about NX is their wide array of 1st and 3rd party code generators. For example, NX's first party NestJS generator bootstraps a new app quickly. There is also a [3rd party serverless plugin]((https://github.com/Bielik20/nx-plugins/tree/master/packages/nx-serverless)) that generates an empty Serverless Framework app.
+A great thing about NX is the wide array of 1st and 3rd party code generators available. For example, NX's first party [NestJS generator](https://nx.dev/packages/nest#create-applications) bootstraps a new app quickly. There is also a [3rd party serverless plugin]((https://github.com/Bielik20/nx-plugins/tree/master/packages/nx-serverless)) that generates an empty Serverless Framework app.
 
 The problem? Both those plugins assume a brand new empty state. I can not use one to amend the other.
 
@@ -38,11 +40,11 @@ My core focus was using NestJS and I thought of deployment more as a detail. So 
 
 # Problem
 
-A key aspect of an NX integrated repo is that all projects within it share the same top level dependencies. So `package.json` and `node_modules` live at the root of the repo and not within the child projects' directories.
+A key aspect of an NX integrated repo is that all projects within it share the same top level dependencies. So `package.json` and `node_modules` live at the root of the repo and not within the directories of the child projects.
 
 _This [page](https://nx.dev/concepts/integrated-vs-package-based) explains the differences between integrated and package based repos._
 
-Serverless Framework is a bit naive out of the box. It expects to be executed in the repo's root where `package.json`, `node_modules`, and `serverless.yml` live. It will simply package all the repo's code, including the entire `node_modules`directory and irrelevant projects, in its generated bundle.
+Serverless Framework is a bit naive out of the box. It expects to be executed in the repo's root where `package.json`, `node_modules`, and `serverless.yml` typically live. It will simply package all the repo's code, including the entire `node_modules`directory and the code from irrelevant projects, in its generated bundle.
 
 You can see that there is some friction between the monorepo style I want and how Serverless Framework works.
 
@@ -52,18 +54,16 @@ The rest of this post explains the steps I took to get it all working together.
 
 ## Configuring NestJS
 
-The NestJS app needs a Serverless Framework handler. I took the [example](https://docs.nestjs.com/faq/serverless#example-integration) from NestJS' docs and made a few minor tweaks.
+The NestJS app needs a Serverless Framework handler. We can simply take the [example](https://docs.nestjs.com/faq/serverless#example-integration) from NestJS' docs and make a few minor tweaks.
 
 Internally NestJS uses Express. This handler simply exposes the internal Express server and supplies it to the `@vendia/serverless-express` package.
 
 `@vendia/serverless-express` is a utility package that maps serverless events into HTTP requests that Express understands.
 
-What's nice about a setup like this is that you can have a single serverless function run an entire app. This simplifies development and deployment, but at the cost of a potentially larger serverless function that could incur the classic serverless ["cold start"](https://www.serverless.com/blog/keep-your-lambdas-warm/) price.
+What's nice about a setup like this is that one can have a single serverless function run an entire app. This simplifies development and deployment, but at the cost of a potentially larger serverless function that could incur the classic serverless ["cold start"](https://www.serverless.com/blog/keep-your-lambdas-warm/) price.
 
 ### Handler Example
 ```ts
-/* Serverless Framework handler */
-
 import { NestFactory } from '@nestjs/core';
 import { configure as serverlessExpress } from '@vendia/serverless-express';
 import { Callback, Context, Handler, } from 'aws-lambda';
@@ -94,7 +94,7 @@ export const handler: Handler = async (
 ## Configuring Serverless Framework
 
 ### Plugins
-We need to use two Serverless plugins to give Serverless Framework a little more smarts.
+We need to use the following two Serverless plugins to give Serverless Framework a little more smarts.
 
 * [Serverless Offline](https://www.npmjs.com/package/serverless-offline)
 * [Serverless Bundle](https://www.npmjs.com/package/serverless-bundle)
@@ -103,7 +103,7 @@ Serverless Offline is for local development. It spins up a local dev server that
 
 Serverless Bundle will bundle only the code your project needs including dependencies. This resolves the problem of Serverless Framework bundling all of your `node_modules` instead of just the ones your specific project uses.
 
-This plugin is also smart and is able to handle the location of the `node_modules` directory at the repo root instead of the project root with no configuration changes.
+This plugin is also smart and is able to handle the location of the `node_modules` directory at the repo root instead of the project's root with no configuration changes.
 
 Serverless Bundle advertises a low-config "just works" experience. For the simple projects in my example repo, this proved to be true. Internally it uses [Serverless Webpack](https://www.npmjs.com/package/serverless-webpack), so you could opt to use that directly if you end up needing more advanced configs.
 
@@ -113,7 +113,7 @@ Since we are operating in the context of a monorepo, we assume there will other 
 
 While we want each project to have flexibility with their own configuration, there will likely be common configuration between projects as well.
 
-To handle this case, we will introduce a `serverless.base.yml` file at the root of the repo.
+To handle this case, we introduce a `serverless.base.yml` file at the root of the repo.
 
 #### serverless.base.yml Example
 ```yaml
@@ -142,7 +142,7 @@ custom:
 
 *(You probably noticed the scary looking* `ignorePackages` *block. Basically, packages that are either native to Node.js or incompatible with Webpack should be ignored. This Github [issue](https://github.com/nestjs/nest/issues/1706) explains why these specific packages were ignored.)*
 
-Then in each respective project, we would have a `serverless.yml` file.
+Then in each respective project, we also introduce a `serverless.yml` file.
 
 #### serverless.yml Example
 ```yaml
@@ -170,13 +170,15 @@ functions:
           path: '{proxy+}'
 ```
 
-In the example above we are using the ability to reference external YAML files documented [here](https://www.serverless.com/framework/docs/providers/aws/guide/variables#reference-properties-in-other-files).
+In the example above, we are using the ability to reference external YAML files documented [here](https://www.serverless.com/framework/docs/providers/aws/guide/variables#reference-properties-in-other-files).
+
+I am not aware of a better way to share or inherit YAML configuration between projects. If you know of one, please let me know!
 
 ## Configuring NX
 
 Now that we have Serverless Framework configured with our NestJS handlers, we need to wire up some NX targets to actually run our Serverless Framework commands in NX's task runner system.
 
-We will replace the `serve` target that was generated with NestJS and introduce a new `deploy` target in each project's `project.json`.
+We replace the `serve` target that was generated with NestJS and add a new `deploy` target in each project's `project.json`.
 
 ### project.json Example
 ```json
@@ -210,7 +212,7 @@ We will replace the `serve` target that was generated with NestJS and introduce 
 ```
 Notice the `cwd` value in the `options` object. This option is set because we need to make sure NX runs the Serverless Framework commands in the root of each project instead of the repo's root.
 
-Now that each `project.json` has updated, we can run our Serverless Framework commands via NX's task runner system.
+Now that each `project.json` has been updated, we are able to run our Serverless Framework commands via NX's task runner system.
 
 Examples:
 
