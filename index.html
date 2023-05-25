@@ -10,14 +10,29 @@
             href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
             rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" rel="stylesheet"/>
     <style>
         html,
         body {
             height: 100vh;
             font-family: "Rubik", sans-serif;
-            color: #404040;
+            color: #464646;
             padding: 0;
             margin: 0;
+        }
+
+        hr {
+            border: #6a6a6a solid 1px;
+            width: 100px;
+        }
+
+        a {
+            color: #b06e6e;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
 
         #container {
@@ -32,10 +47,12 @@
             flex-direction: column;
             align-items: center;
         }
+
         #avatar {
             width: 100px;
             height: auto;
         }
+
         #text-logo {
             width: 250px;
             height: auto;
@@ -46,7 +63,19 @@
 <main id="container">
     <div id="content">
         <img id="avatar" src="/assets/fg-avatar-transparent-bg.png" alt="avatar">
-       <img id="text-logo" src="/assets/text-logo.png" alt="text logo"/>
+        <img id="text-logo" src="/assets/text-logo.png" alt="text logo"/>
+        <h3>Ventures in Software</h3>
+        <hr/>
+        <h4>Contact</h4>
+        <a href="mailto:functionsandglory@proton.me">functionsandglory@proton.me</a>
+        <h4>
+            Projects
+        </h4>
+        <a href="https://github.com/functionsandglory">Github</a>
+        <a href="https://rubberducktherapy.app/">Rubber Duck Chatbot</a>
+        <p>
+        <hr/>
+        </p>
     </div>
 </main>
 </body>
