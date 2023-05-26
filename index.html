@@ -4,78 +4,23 @@
     <meta charset="UTF-8"/>
     <title>Functions & Glory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
-            rel="stylesheet"
-    />
-    <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" rel="stylesheet"/>
-    <style>
-        html,
-        body {
-            height: 100vh;
-            font-family: "Rubik", sans-serif;
-            color: #464646;
-            padding: 0;
-            margin: 0;
-        }
-
-        hr {
-            border: #6a6a6a solid 1px;
-            width: 100px;
-        }
-
-        a {
-            color: #b06e6e;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        #container {
-            display: flex;
-            height: 100%;
-            background-color: #cfdbdb;
-        }
-
-        #content {
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #avatar {
-            width: 100px;
-            height: auto;
-        }
-
-        #text-logo {
-            width: 250px;
-            height: auto;
-        }
-    </style>
+    <link href="/dist/main.css" rel="stylesheet">
 </head>
 <body>
-<main id="container">
-    <div id="content">
-        <img id="avatar" src="/assets/fg-avatar-transparent-bg.png" alt="avatar">
-        <img id="text-logo" src="/assets/text-logo.png" alt="text logo"/>
-        <h3>Ventures in Software</h3>
-        <hr/>
-        <h4>Contact</h4>
-        <a href="mailto:functionsandglory@proton.me">functionsandglory@proton.me</a>
-        <h4>
+<main class="h-screen flex bg-cyan-50">
+    <div class="m-auto flex flex-col items-center text-center">
+        <img id="avatar" src="/assets/fg-avatar-transparent-bg.png" alt="avatar" class="w-24">
+        <img id="text-logo" src="/assets/text-logo.png" alt="text logo" class="w-56"/>
+        <h2 class="text-xl mt-5 font-medium text-gray-800">Ventures in Software</h2>
+        <hr class="mt-5 mb-4 w-3/4"/>
+        <h3 class="text-lg font-light mb-1">Contact</h3>
+        <a href="mailto:functionsandglory@proton.me" class="text-red-400 hover:underline">functionsandglory@proton.me</a>
+        <h3 class="text-lg font-light mt-5 mb-1">
             Projects
-        </h4>
-        <a href="https://github.com/functionsandglory">Github</a>
-        <a href="https://rubberducktherapy.app/">Rubber Duck Chatbot</a>
-        <p>
-        <hr/>
-        </p>
+        </h3>
+        <a href="https://github.com/functionsandglory" class="text-red-400 hover:underline">Github</a>
+        <a href="https://rubberducktherapy.app/" class="text-red-400 hover:underline">Rubber Duck Chatbot</a>
+        <hr class="mt-5 mb-5 w-3/4"/>
     </div>
 </main>
 </body>

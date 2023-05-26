@@ -1,0 +1,10 @@
+{
+  "name": "functionsandglory",
+  "version": "0.0.1",
+  "dependencies": {
+    "tailwindcss": "^3.3.2"
+  },
+  "scripts": {
+    "build-tailwind": "tailwindcss -i ./src/main.css -o ./dist/main.css --watch"
+  }
+}
