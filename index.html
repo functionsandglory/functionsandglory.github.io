@@ -9,31 +9,54 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGHWEETRM7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'G-XGHWEETRM7');
     </script>
+    <style>
+        @font-face {
+            font-family: "SF Fedora";
+            src: url("/assets/sf-fedora.ttf");
+        }
+
+        .mountain-background {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23a4907c' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%238d7b68' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23b3a08b' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23998774' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23c3af9b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23a59381' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23d2bfaa' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23b09e8d' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23e2ceba' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%23bcaa9a' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23f1dec9' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23c8b6a6' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+        }
+
+    </style>
 </head>
 <body>
-<main class="h-screen flex bg-sky-50">
-    <div class="m-auto flex flex-col items-center text-center">
-        <img id="avatar" src="/assets/fg-avatar-transparent-bg.png" alt="avatar" class="w-24">
-        <img id="text-logo" src="/assets/text-logo.png" alt="text logo" class="w-56"/>
-        <h2 class="text-xl mt-5 font-medium text-gray-800">Ventures in Software</h2>
-        <hr class="mt-5 mb-5 w-3/4 border-gray-300"/>
-        <h3 class="text-lg font-light mb-1 ">Contact</h3>
-        <a href="mailto:functionsandglory@proton.me"
-           class="text-theme-red hover:underline">functionsandglory@proton.me</a>
-        <a href="https://twitter.com/funcsandglory" class="text-theme-red hover:underline" target="_blank">@funcsandglory
-            (twitter)</a>
-        <h3 class="text-lg font-light mt-5 mb-1">
-            Projects
-        </h3>
-        <a href="https://github.com/functionsandglory" class="text-theme-red hover:underline" target="_blank">Github</a>
-        <a href="https://rubberducktherapy.app/" class="text-theme-red hover:underline" target="_blank">Rubber Duck
-            Chatbot</a>
-        <hr class="mt-5 mb-5 w-3/4 border-gray-300"/>
+<main class="h-screen mountain-background bg-sky-50 flex flex-col ">
+    <div class="p-2">
+        <span class="font-fedora text-xl text-slate-700">F(G)</span>
+    </div>
+    <div class="flex flex-col m-auto text-center">
+        <div>
+            <h1 class="font-fedora text-3xl text-slate-700">Functions and Glory</h1>
+            <h2 class="text-xl text-slate-600">Ventures in Software</h2>
+        </div>
+        <div class="flex flex-col bg-white px-20 py-2 rounded mt-2">
+            <h3 class="text-lg font-light mb-1 ">Contact</h3>
+            <a href="mailto:functionsandglory@proton.me"
+               class="text-theme-red hover:underline">functionsandglory@proton.me</a>
+            <a href="https://twitter.com/funcsandglory" class="text-theme-red hover:underline" target="_blank">@funcsandglory
+                (twitter)</a>
+            <h3 class="text-lg font-light mt-5 mb-1">
+                Projects
+            </h3>
+            <a href="https://github.com/functionsandglory" class="text-theme-red hover:underline"
+               target="_blank">Github</a>
+            <a href="https://rubberducktherapy.app/" class="text-theme-red hover:underline" target="_blank">Rubber Duck
+                Chatbot</a>
+        </div>
     </div>
 </main>
 </body>
