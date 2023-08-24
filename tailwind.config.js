@@ -6,10 +6,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 'fedora': ['SF Fedora']
-            },
-            colors: {
-                'theme-red': '#b35959'
-            },
+            }
         },
     },
 };
