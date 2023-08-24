@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
     content: [
         'index.html'
@@ -5,7 +7,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                'fedora': ['SF Fedora']
+                'sans': ['Noto Sans', ...defaultTheme.fontFamily.sans],
+                'fedora': ['SF Fedora'],
             }
         },
     },
