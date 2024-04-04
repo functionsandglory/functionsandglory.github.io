@@ -713,3 +713,9 @@ video {
   --tw-text-opacity: 1;
   color: rgb(134 239 172 / var(--tw-text-opacity));
 }
+
+@media (min-width: 640px) {
+  .sm\:flex-none {
+    flex: none;
+  }
+}
