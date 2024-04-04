@@ -1,3 +1,3 @@
 # Functions and Glory
 
-Hello beautiful world!
+Home page for Functions and Glory
