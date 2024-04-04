@@ -10,7 +10,7 @@ import '../main.css'
     <link href="/main.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGHWEETRM7"></script>
-    <script>
+    <script is:inline>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -78,7 +78,7 @@ import '../main.css'
     </div>
 </main>
 <div id="line" class="absolute top-0 left-1/2 translate-x-1/2 w-2 bg-red-900"></div>
-<script>
+<script is:inline>
     const container = document.getElementById('container');
     const line = document.getElementById('line');
     const mapBackground = document.getElementById('map-background-container');
