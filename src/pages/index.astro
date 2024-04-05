@@ -1,5 +1,6 @@
 ---
 import '../main.css'
+import MenuItem from '../components/MenuItem.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,7 @@ import '../main.css'
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="/main.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGHWEETRM7"></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XGHWEETRM7"></script>
     <script is:inline>
         window.dataLayer = window.dataLayer || [];
 
@@ -40,15 +41,15 @@ import '../main.css'
 <header class="bg-stone-900 p-4 flex flex-row gap-8 items-center z-10">
     <div class="font-fedora text-2xl text-stone-300 flex-1 sm:flex-none">F(G)</div>
     <ul class="flex flex-row gap-4">
-        <li class="text-stone-300 hover:text-green-300 transition-colors">
-            <a href="#about">About</a>
-        </li>
-        <li class="text-stone-300 hover:text-green-300 transition-colors">
-            <a href="#projects">Projects</a>
-        </li>
-        <li class="text-stone-300 hover:text-green-300 transition-colors">
-            <a href="#contact">Contact</a>
-        </li>
+        <MenuItem url="#about">
+            About
+        </MenuItem>
+        <MenuItem url="#projects">
+            Projects
+        </MenuItem>
+        <MenuItem url="#contact">
+            Contact
+        </MenuItem>
     </ul>
 </header>
 <main id="container" class="flex flex-col flex-1 min-h-0 relative overflow-auto pt-8">
@@ -57,61 +58,75 @@ import '../main.css'
         <h2 class="text-xl text-stone-300 italic">Ventures in Software</h2>
     </div>
 
-    <div class="flex flex-col flex-1 z-10">
+    <div class="flex flex-col flex-auto z-10">
         <div class="flex-auto min-h-[1000px]">
 
         </div>
-        <footer class="relative overflow-hidden">
-            <div id="mountain-large" class="z-5 relative" style="bottom: -50%">
-                <img alt="mountains" src="/mountain1.svg">
-            </div>
-            <div id="mountain-small" class="absolute bottom-0 z-10 flex flex-row justify-center">
-                <div class="w-2/3">
-                    <img alt="mountains" src="/mountain2.svg">
-                </div>
-            </div>
+        <footer class="relative h-[200px] sm:h-[300px] flex flex-row justify-center overflow-hidden">
+            <img id="mountain-large" alt="mountains" src="/mountain1.svg" class="h-full w-auto max-w-none z-5 relative">
+            <img alt="mountains" src="/mountain2.svg" class="h-1/2 w-auto max-w-none absolute bottom-0 z-10">
         </footer>
     </div>
 </main>
 <div id="line" class="absolute top-0 left-1/2 translate-x-1/2 w-2 bg-red-900"></div>
-<script is:inline>
+<script>
     const container = document.getElementById('container');
     const line = document.getElementById('line');
+    const mountainLarge = document.getElementById('mountain-large');
     const mapBackground = document.getElementById('map-background-container');
 
-    function getScrollableHeight(element) {
-        return element.scrollHeight - element.clientHeight;
-    }
-
-    function getDistanceScrolled(element) {
+    function getScrolledPixels(element: HTMLElement) {
         return element.scrollTop;
     }
 
-    function getScrollPercent(element) {
-        const scrollableHeight = getScrollableHeight(element);
-        const distanceScrolled = getDistanceScrolled(element);
+    function getScrolledPercent(element: HTMLElement) {
+        const scrollableHeight = element.scrollHeight - element.clientHeight;
+        const distanceScrolled = getScrolledPixels(element);
+
         return (distanceScrolled / scrollableHeight) * 100;
     }
 
-    const mountainLarge = document.getElementById('mountain-large');
-
-    function setMountainPosition(percent) {
-        mountainLarge.style.bottom = `-${100 - percent}%`;
+    function setMountainPosition(percent: number) {
+        if (mountainLarge) {
+            mountainLarge.style.bottom = `-${100 - percent}%`;
+        }
     }
 
-    function setBackgroundImagePosition(scrollValue) {
-        mapBackground.style.backgroundPositionY = `-${scrollValue / 5}px`;
+    function setBackgroundImagePosition(scrollValue: number) {
+        if (mapBackground) {
+            mapBackground.style.backgroundPositionY = `-${scrollValue / 5}px`;
+        }
     }
 
-    container.addEventListener('scroll', () => {
-        const scrollPercent = getScrollPercent(container);
-        const distanceScrolled = getDistanceScrolled(container);
-        setMountainPosition(scrollPercent);
-        setBackgroundImagePosition(distanceScrolled);
-        line.style.height = `${scrollPercent}%`;
-    });
+    function setLineHeight(scrollPercent: number) {
+        if (line) {
+            line.style.height = `${scrollPercent}%`;
+        }
+    }
 
-    setMountainPosition(100);
+    function setScrollState() {
+        if (container) {
+            const scrolledPercent = getScrolledPercent(container);
+            const distanceScrolled = getScrolledPixels(container);
+
+            setMountainPosition(scrolledPercent);
+            setBackgroundImagePosition(distanceScrolled);
+            setLineHeight(scrolledPercent);
+        }
+    }
+
+    function init() {
+        setMountainPosition(100);
+    }
+
+    if (container) {
+        container.addEventListener('scroll', () => {
+            setScrollState();
+        });
+    }
+
+    init();
+
 </script>
 </body>
 </html>

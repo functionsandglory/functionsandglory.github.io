@@ -2,18 +2,22 @@
   "name": "functionsandglory",
   "version": "0.0.1",
   "dependencies": {
-    "tailwindcss": "^3.3.2",
-    "astro": "^4.5.15",
     "@astrojs/check": "^0.5.10",
+    "astro": "^4.5.15",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.4.3"
   },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "tailwind-watch": "tailwindcss -i ./src/main.css -o ./public/main.css --watch",
     "tailwind-build": "tailwindcss -i ./src/main.css -o ./public/main.css"
+  },
+  "devDependencies": {
+    "@astrojs/ts-plugin": "^1.6.1"
   }
 }

@@ -1,0 +1,34 @@
+---
+const {url} = Astro.props;
+---
+<li data-menu-item data-menu-item-active="false" data-menu-item-href={url}
+    class="text-stone-300 px-1 border-b-2 transition-colors border-transparent hover:border-stone-300 data-[menu-item-active=true]:border-stone-300">
+    <a href={url}>
+        <slot/>
+    </a>
+</li>
+<script>
+    const menuItems = document.querySelectorAll('[data-menu-item]');
+
+    function markMenuItemActive(menuItem: Element) {
+        menuItem.setAttribute('data-menu-item-active', 'true');
+    }
+
+    function markMenuItemInactive(menuItem: Element) {
+        menuItem.setAttribute('data-menu-item-active', 'false');
+    }
+
+    menuItems.forEach((menuItem) => {
+        menuItem.addEventListener('click', (event) => {
+            menuItems.forEach(markMenuItemInactive);
+            markMenuItemActive(menuItem);
+        });
+
+        if (menuItem.getAttribute('data-menu-item-href') === window.location.hash) {
+            markMenuItemActive(menuItem);
+        } else {
+            markMenuItemInactive(menuItem);
+        }
+    });
+
+</script>

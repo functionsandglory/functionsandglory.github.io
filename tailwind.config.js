@@ -1,8 +1,8 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+import defaultTheme from 'tailwindcss/defaultTheme';
 
-module.exports = {
+const config = {
     content: [
-        'src/pages/**/*.astro',
+        'src/**/*.astro',
     ],
     theme: {
         extend: {
@@ -13,3 +13,5 @@ module.exports = {
         },
     },
 };
+
+export default config;
