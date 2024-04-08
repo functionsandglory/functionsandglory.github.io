@@ -1,7 +1,9 @@
 <div class="flex flex-row justify-center">
     <div class="relative text-lg font-bold w-36 p-2 bg-stone-300 text-center" style="box-shadow: 5px 5px 0 0 #737373;">
         <slot/>
-        <div data-section-title-point class="absolute w-5 h-5 top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full transition-colors bg-stone-500 data-[section-title-point-filled=true]:bg-red-900">
+        <div class="absolute w-5 h-5 top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full overflow-hidden bg-stone-500">
+            <div data-section-title-point
+                 class="h-0 data-[section-title-point-filled=true]:h-full transition-all bg-red-900 z-10"></div>
         </div>
     </div>
 </div>
@@ -10,16 +12,17 @@
     const line = document.getElementById('line');
     const elements = document.querySelectorAll('[data-section-title-point]');
 
-    container.addEventListener('scroll', () => {
-        elements.forEach((element) => {
-            const pointCoords = element.getBoundingClientRect();
+    if (line && container) {
+        container.addEventListener('scroll', () => {
+            elements.forEach((element) => {
+                const pointCoords = element.getBoundingClientRect();
 
-            if (pointCoords.y < line.offsetHeight) {
-                element.setAttribute('data-section-title-point-filled', 'true')
-            } else {
-                element.setAttribute('data-section-title-point-filled', 'false')
-            }
+                if (pointCoords.y < line.offsetHeight) {
+                    element.setAttribute('data-section-title-point-filled', 'true')
+                } else {
+                    element.setAttribute('data-section-title-point-filled', 'false')
+                }
+            });
         });
-    });
-
+    }
 </script>
