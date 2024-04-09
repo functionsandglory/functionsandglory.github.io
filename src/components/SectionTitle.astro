@@ -2,27 +2,68 @@
     <div class="relative text-lg font-bold w-36 p-2 bg-stone-300 text-center" style="box-shadow: 5px 5px 0 0 #737373;">
         <slot/>
         <div class="absolute w-5 h-5 top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full overflow-hidden bg-stone-500">
-            <div data-section-title-point
+            <div id={Astro.props.id} data-section-title-point
                  class="h-0 data-[section-title-point-filled=true]:h-full transition-all bg-red-900 z-10"></div>
         </div>
     </div>
 </div>
 <script>
-    const container = document.getElementById('container');
-    const line = document.getElementById('line');
-    const elements = document.querySelectorAll('[data-section-title-point]');
+    import {getLine, getScrollContainer} from "../utils";
 
-    if (line && container) {
-        container.addEventListener('scroll', () => {
-            elements.forEach((element) => {
-                const pointCoords = element.getBoundingClientRect();
+    function handleMenuItemState() {
+        const menuItems = document.querySelectorAll('[data-menu-item]');
+        const toggledSectionTitlePoints = document.querySelectorAll('[data-section-title-point-filled=true]');
+        const activeSectionTitlePoint = toggledSectionTitlePoints[toggledSectionTitlePoints.length - 1];
 
-                if (pointCoords.y < line.offsetHeight) {
-                    element.setAttribute('data-section-title-point-filled', 'true')
-                } else {
-                    element.setAttribute('data-section-title-point-filled', 'false')
-                }
-            });
+        if (!menuItems) {
+            return;
+        }
+
+        menuItems.forEach((menuItem) => {
+            if (activeSectionTitlePoint && menuItem.getAttribute('data-menu-item-target') === activeSectionTitlePoint.getAttribute('id')) {
+                menuItem.setAttribute('data-menu-item-active', 'true');
+            } else {
+                menuItem.setAttribute('data-menu-item-active', 'false');
+            }
         });
     }
+
+    function handleSectionTitlePointState() {
+        const line = getLine();
+        const sectionTitlePoints = document.querySelectorAll('[data-section-title-point]');
+
+        if (!line) {
+            throw new Error('Element with id=line not found');
+        }
+
+        sectionTitlePoints.forEach((sectionTitlePoint, index, list) => {
+            const pointCoords = sectionTitlePoint.getBoundingClientRect();
+
+            if (pointCoords.y > line.offsetHeight) {
+                sectionTitlePoint.setAttribute('data-section-title-point-filled', 'false');
+                return;
+            }
+
+            sectionTitlePoint.setAttribute('data-section-title-point-filled', 'true');
+
+            if (index === list.length - 1) {
+                line.style.height = `${Math.max(pointCoords.y, 0)}px`;
+            }
+        });
+    }
+
+    function handleScroll() {
+        const scrollContainer = getScrollContainer()
+
+        if (!scrollContainer) {
+            throw new Error('Element with id=scroll-container not found');
+        }
+
+        scrollContainer.addEventListener('scroll', () => {
+            handleSectionTitlePointState();
+            handleMenuItemState();
+        });
+    }
+
+    handleScroll();
 </script>

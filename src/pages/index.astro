@@ -48,22 +48,22 @@ import SectionTitle from "../components/SectionTitle.astro";
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Silkscreen:wght@700&display=swap');
     </style>
 </head>
-<body id="map-background-container" class="map-background flex flex-col h-screen relative overflow-hidden">
+<body id="map-background" class="map-background flex flex-col h-screen relative">
 <header class="bg-stone-900 p-4 flex flex-row gap-8 items-center z-10">
     <div class="font-fedora text-2xl text-stone-300 flex-1 sm:flex-none">F(G)</div>
-    <ul class="flex flex-row gap-4">
-        <MenuItem url="#about">
+    <ul role="menu" class="flex flex-row gap-4">
+        <MenuItem targetId="about">
             About
         </MenuItem>
-        <MenuItem url="#projects">
+        <MenuItem targetId="projects">
             Projects
         </MenuItem>
-        <MenuItem url="#contact">
+        <MenuItem targetId="contact">
             Contact
         </MenuItem>
     </ul>
 </header>
-<main id="container" class="flex-1 min-h-0 relative overflow-auto pt-8 z-10 hide-scrollbar">
+<main id="scroll-container" class="flex-1 min-h-0 relative overflow-auto pt-8 z-10 hide-scrollbar">
     <Section>
         <div class="text-center mb-8 ">
             <h1 class="font-fedora text-4xl text-stone-300">Functions and Glory</h1>
@@ -71,8 +71,18 @@ import SectionTitle from "../components/SectionTitle.astro";
         </div>
     </Section>
     <Section>
-        <SectionTitle>
+        <SectionTitle id="about">
             About
+        </SectionTitle>
+    </Section>
+    <Section>
+        <SectionTitle id="projects">
+            Projects
+        </SectionTitle>
+    </Section>
+    <Section>
+        <SectionTitle id="contact">
+            Contact
         </SectionTitle>
     </Section>
     <footer class="relative h-[200px] sm:h-[300px] flex flex-row justify-center overflow-hidden">
@@ -82,63 +92,78 @@ import SectionTitle from "../components/SectionTitle.astro";
 </main>
 <div id="line" class="absolute top-0 left-1/2 -translate-x-1/2 w-2 bg-red-900 z-0"></div>
 <script>
-    const container = document.getElementById('container');
-    const line = document.getElementById('line');
-    const mountainLarge = document.getElementById('mountain-large');
-    const mapBackground = document.getElementById('map-background-container');
-
-    function getScrolledPixels(element: HTMLElement) {
-        return element.scrollTop;
-    }
-
-    function getScrolledPercent(element: HTMLElement) {
-        const scrollableHeight = element.scrollHeight - element.clientHeight;
-        const distanceScrolled = getScrolledPixels(element);
-
-        return (distanceScrolled / scrollableHeight) * 100;
-    }
-
-    function setMountainPosition(percent: number) {
-        if (mountainLarge) {
-            mountainLarge.style.bottom = `-${100 - percent}%`;
-        }
-    }
-
-    function setBackgroundImagePosition(scrollValue: number) {
-        if (mapBackground) {
-            mapBackground.style.backgroundPositionY = `-${scrollValue / 5}px`;
-        }
-    }
-
-    function setLineHeight(scrollPercent: number) {
-        if (line) {
-            line.style.height = `${scrollPercent}%`;
-        }
-    }
-
-    function setScrollState() {
-        if (container) {
-            const scrolledPercent = getScrolledPercent(container);
-            const distanceScrolled = getScrolledPixels(container);
-
-            setMountainPosition(scrolledPercent);
-            setBackgroundImagePosition(distanceScrolled);
-            setLineHeight(scrolledPercent);
-        }
-    }
+    import {getLine, getScrollContainer, easeIn, getHeaderOffset} from "../utils";
 
     function init() {
+        const scrollContainer = getScrollContainer();
+        const line = getLine();
+        const mountainLarge = document.getElementById('mountain-large');
+        const mapBackground = document.getElementById('map-background');
+
+        function getScrolledPixels() {
+            if (!scrollContainer) {
+               throw new Error('Element with id=scroll-container not found');
+            }
+
+            return scrollContainer.scrollTop;
+        }
+
+        function getScrolledPercent() {
+            if (!scrollContainer) {
+                throw new Error('Element with id=scroll-container not found');
+            }
+
+            const scrollableHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+            const distanceScrolled = getScrolledPixels();
+
+            return (distanceScrolled / scrollableHeight);
+        }
+
+        function setMountainPosition(percent: number) {
+            if (!mountainLarge) {
+                throw new Error('Element with id=mountain-large not found');
+            }
+
+            mountainLarge.style.bottom = `-${100 - percent}%`;
+        }
+
+        function setBackgroundImagePosition(scrollValue: number) {
+            if (!mapBackground) {
+                throw new Error('Element with id=map-background not found');
+            }
+
+            mapBackground.style.backgroundPositionY = `-${scrollValue / 5}px`;
+        }
+
+        function setLineHeight(height: number) {
+            if (!line) {
+                throw new Error('Element with id=line not found');
+            }
+
+            line.style.height = `${Math.min(height, getHeaderOffset())}px`;
+        }
+
+        function setScrollState() {
+            const scrolledPercent = getScrolledPercent();
+            const scrolledPixels = getScrolledPixels();
+
+            setMountainPosition(Math.floor(easeIn(scrolledPercent) * 100));
+            setBackgroundImagePosition(scrolledPixels);
+            setLineHeight(scrolledPixels);
+        }
+
+        if (!scrollContainer) {
+            throw new Error('Element with id=scroll-container not found');
+        }
+
+        scrollContainer.addEventListener('scroll', () => {
+            setScrollState();
+        });
+
         setMountainPosition(100);
     }
 
-    if (container) {
-        container.addEventListener('scroll', () => {
-            setScrollState();
-        });
-    }
-
     init();
-
 </script>
 </body>
 </html>

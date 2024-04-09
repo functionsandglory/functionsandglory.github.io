@@ -1,41 +1,40 @@
----
-const {url} = Astro.props;
----
-<li data-menu-item data-menu-item-active="false" data-menu-item-href={url}
+<li role="menuitem" data-menu-item data-menu-item-active="false" data-menu-item-target={Astro.props.targetId}
     class="text-stone-300 p-1 border-b-2 transition-colors border-transparent hover:border-stone-300 data-[menu-item-active=true]:border-stone-300">
-    <a href={url}>
-        <slot/>
-    </a>
+    <slot/>
 </li>
 <script>
-    const menuItems = document.querySelectorAll('[data-menu-item]');
+    import {getHeaderOffset, getScrollContainer} from "../utils";
 
-    function markMenuItemActive(menuItem: Element) {
-        menuItem.setAttribute('data-menu-item-active', 'true');
-    }
+    const scrollContainer = getScrollContainer();
+    const headerOffset = getHeaderOffset();
+    const menuItems = document.querySelectorAll<HTMLElement>('[data-menu-item]');
 
-    function markMenuItemInactive(menuItem: Element) {
-        menuItem.setAttribute('data-menu-item-active', 'false');
-    }
+    function onMenuItemClick(menuItem: Element) {
+        const targetId = menuItem.getAttribute('data-menu-item-target');
 
-    function initMenuItems() {
-        menuItems.forEach((menuItem) => {
-            menuItem.addEventListener('click', (event) => {
-                menuItems.forEach(markMenuItemInactive);
-                markMenuItemActive(menuItem);
+        if (!targetId) {
+            throw new Error('data-menu-item-target attribute is required');
+        }
+
+        if (!scrollContainer) {
+            throw new Error('Element with id=scroll-container not found');
+        }
+
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            scrollContainer.scrollTo({
+                top: Math.ceil(scrollContainer.scrollTop + (targetElement.getBoundingClientRect().y - headerOffset)),
+                behavior: 'smooth'
             });
-
-            if (menuItem.getAttribute('data-menu-item-href') === window.location.hash) {
-                markMenuItemActive(menuItem);
-            } else {
-                markMenuItemInactive(menuItem);
-            }
-        });
-
-        if(!window.location.hash) {
-            markMenuItemActive(menuItems[0]);
         }
     }
 
-    initMenuItems();
+    function setClickEventListeners() {
+        menuItems.forEach((menuItem) => {
+            menuItem.addEventListener('click', () => onMenuItemClick(menuItem));
+        });
+    }
+
+    setClickEventListeners();
 </script>
