@@ -3,10 +3,10 @@
     <slot/>
 </li>
 <script>
-    import {getHeaderOffset, getScrollContainer} from "../utils";
+    import {getScrollContainer} from "../utils";
+    import {SECTION_TITLE_HEADER_OFFSET} from "../constants";
 
     const scrollContainer = getScrollContainer();
-    const headerOffset = getHeaderOffset();
     const menuItems = document.querySelectorAll<HTMLElement>('[data-menu-item]');
 
     function onMenuItemClick(menuItem: Element) {
@@ -24,7 +24,7 @@
 
         if (targetElement) {
             scrollContainer.scrollTo({
-                top: Math.ceil(scrollContainer.scrollTop + (targetElement.getBoundingClientRect().y - headerOffset)),
+                top: Math.ceil(scrollContainer.scrollTop + (targetElement.getBoundingClientRect().y - SECTION_TITLE_HEADER_OFFSET)),
                 behavior: 'smooth'
             });
         }

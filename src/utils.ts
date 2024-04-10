@@ -1,11 +1,3 @@
-export function getHeaderOffset() {
-    return 150;
-}
-
-export function getLine() {
-    return document.getElementById('line');
-}
-
 export function getScrollContainer() {
     return document.getElementById('scroll-container');
 }
