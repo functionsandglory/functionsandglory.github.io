@@ -6,7 +6,7 @@ const {id} = Astro.props;
         <slot/>
         <div class="absolute w-5 h-5 top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full overflow-hidden bg-stone-500">
             <div id={id} data-section-title-point
-                 class="h-0 data-[section-title-point-filled=true]:h-full transition-all bg-red-900 z-10"></div>
+                 class="h-0 data-[state-active=true]:h-full transition-all bg-red-900 z-10"></div>
         </div>
     </div>
 </div>
@@ -31,14 +31,14 @@ const {id} = Astro.props;
     }
 
     function handleMenuItemState() {
-        const toggledSectionTitlePoints = document.querySelectorAll('[data-section-title-point-filled=true]');
+        const toggledSectionTitlePoints = document.querySelectorAll('[data-section-title-point][data-state-active=true]');
         const activeSectionTitlePoint = toggledSectionTitlePoints[toggledSectionTitlePoints.length - 1];
 
         menuItems.forEach((menuItem) => {
-            if (activeSectionTitlePoint && menuItem.getAttribute('data-menu-item-target') === activeSectionTitlePoint.getAttribute('id')) {
-                menuItem.setAttribute('data-menu-item-active', 'true');
+            if (activeSectionTitlePoint && menuItem.getAttribute('data-section-id') === activeSectionTitlePoint.getAttribute('id')) {
+                menuItem.setAttribute('data-state-active', 'true');
             } else {
-                menuItem.setAttribute('data-menu-item-active', 'false');
+                menuItem.setAttribute('data-state-active', 'false');
             }
         });
     }
@@ -50,13 +50,13 @@ const {id} = Astro.props;
             const sectionTitlePointCoords = sectionTitlePoint.getBoundingClientRect();
 
             if (!sectionTitleLine) {
-                throw new Error('Element with id=${sectionTitlePointId} not found');
+                throw new Error(`Element with id=${sectionTitlePointId}-line not found`);
             }
 
             if (sectionTitlePointCoords.y <= SECTION_TITLE_HEADER_OFFSET) {
-                sectionTitlePoint.setAttribute('data-section-title-point-filled', 'true');
+                sectionTitlePoint.setAttribute('data-state-active', 'true');
             } else {
-                sectionTitlePoint.setAttribute('data-section-title-point-filled', 'false');
+                sectionTitlePoint.setAttribute('data-state-active', 'false');
             }
 
             if (sectionTitlePointCoords.y <= LINE_START_THRESHOLD) {
@@ -67,16 +67,12 @@ const {id} = Astro.props;
         });
     }
 
-    function handleScroll() {
-        if (!scrollContainer) {
-            throw new Error('Element with id=scroll-container not found');
-        }
-
-        scrollContainer.addEventListener('scroll', () => {
-            handleSectionTitlePointState();
-            handleMenuItemState();
-        });
+    if (!scrollContainer) {
+        throw new Error('Element with id=scroll-container not found');
     }
 
-    handleScroll();
+    scrollContainer.addEventListener('scroll', () => {
+        handleSectionTitlePointState();
+        handleMenuItemState();
+    });
 </script>

@@ -6,6 +6,7 @@ import SectionTitle from "../components/SectionTitle.astro";
 import SectionContent from "../components/SectionContent.astro";
 import Card from '../components/Card.astro';
 import Line from "../components/Line.astro";
+import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -49,15 +50,15 @@ import Line from "../components/Line.astro";
 </head>
 <body id="map-background" class="map-background flex flex-col h-screen relative">
 <header class="bg-stone-900 p-4 flex flex-row gap-8 items-center z-10">
-    <div class="font-fedora text-2xl text-stone-300 flex-1 sm:flex-none">F(G)</div>
+    <button id="logo" class="font-fedora text-2xl text-stone-300 flex-1 sm:flex-none">F(G)</button>
     <ul role="menu" class="flex flex-row gap-4">
-        <MenuItem targetId="about">
+        <MenuItem sectionId="about">
             About
         </MenuItem>
-        <MenuItem targetId="projects">
+        <MenuItem sectionId="projects">
             Projects
         </MenuItem>
-        <MenuItem targetId="contact">
+        <MenuItem sectionId="contact">
             Contact
         </MenuItem>
     </ul>
@@ -65,10 +66,17 @@ import Line from "../components/Line.astro";
 <main id="scroll-container" class="flex-1 min-h-0 relative overflow-y-auto overflow-x-hidden pt-8 z-10">
     <div class="relative w-screen h-full">
         <div class="h-full">
-            <div class="text-center mb-8 ">
-                <h1 class="font-fedora text-4xl text-stone-300">Functions and Glory</h1>
-                <h2 class="text-xl text-stone-300 italic">Ventures in Software</h2>
+            <div class="flex flex-col gap-12 items-center">
+                <div class="text-center">
+                    <h1 class="font-fedora text-4xl text-stone-300">Functions and Glory</h1>
+                    <h2 class="text-xl text-stone-300 italic">Ventures in Software</h2>
+                </div>
+                <button id="start-button" data-section-id="about"
+                        class="hover:scale-105 active:scale-95 transition-all">
+                    <img src="/down-arrow.svg" alt="down arrow" class="w-10 h-10">
+                </button>
             </div>
+
         </div>
         <div class="flex flex-col gap-20">
             <Section>
@@ -79,32 +87,8 @@ import Line from "../components/Line.astro";
                     <Card>
                         <div class="flex flex-col gap-4 text-lg">
                             <p>
-                                I am a web developer with 10+ years of B2B SaaS in the fintech and social ecommerce spaces.
-                            </p>
-                            <p>
-                                I have experience building full-stack web-apps from concept to deployment.
-                            </p>
-                            <p>
-                                Core competencies and technologies include:
-                            </p>
-                            <ul class="list-inside list-disc">
-                                <li>
-                                    Responsive designs and rich user interfaces
-                                </li>
-                                <li>
-                                    React, Typescript
-                                </li>
-                                <li>
-                                    Laravel, PHP
-                                </Li>
-                                <li>
-                                    AWS and Azure cloud services
-                                </Li>
-                            </ul>
-                        </div>
-                        <div class="flex flex-col gap-4 text-lg">
-                            <p>
-                                I am a web developer with 10+ years of B2B SaaS in the fintech and social ecommerce spaces.
+                                I am a web developer with 10+ years of B2B SaaS in the fintech and social ecommerce
+                                spaces.
                             </p>
                             <p>
                                 I have experience building full-stack web-apps from concept to deployment.
@@ -136,7 +120,13 @@ import Line from "../components/Line.astro";
                 </SectionTitle>
                 <SectionContent>
                     <Card>
-                        Coming soon...
+                        <ProjectSummaryObject
+                                title="Rubber Duck Therapy Chatbot"
+                                url="https://rubberducktherapy.app"
+                                image="/rubber-duck-therapy-screenshot.png"
+                        >
+                            A chatbot built with OpenAI's GPT API that provides the rubber duck debugging technique in the style of <a href="https://en.wikipedia.org/wiki/ELIZA">Eliza.</a>
+                        </ProjectSummaryObject>
                     </Card>
                 </SectionContent>
             </Section>
@@ -144,83 +134,114 @@ import Line from "../components/Line.astro";
                 <SectionTitle id="contact">
                     Contact
                 </SectionTitle>
+                <SectionContent>
+                    <Card>
+                        <div class="flex flex-col gap-8">
+                            <div class="flex flex-col gap-4 text-lg">
+                                <p>
+                                    I am available for freelance work.
+                                </p>
+                                <p>
+                                    Email me at: <a class="text-blue-300" href="mailto:functionsandglory@proton.me">functionsandglory@proton.me</a>
+                                </p>
+                            </div>
+                            <div class="flex flex-row justify-center gap-4">
+                                <a href="https://github.com/functionsandglory" target="_blank">
+                                    <img src="/github-logo.svg" alt="github" class="w-8 h-8">
+                                </a>
+                                <a href="https://x.com/funcsandglory" target="_blank">
+                                    <img src="/x-logo.svg" alt="github" class="w-8 h-8">
+                                </a>
+                            </div>
+                        </div>
+                    </Card>
+                </SectionContent>
             </Section>
-
         </div>
-        <div class="h-full flex flex-col justify-end">
-            <footer class="relative h-[200px] sm:h-[300px] flex flex-row justify-center overflow-hidden">
-                <img id="mountain-large" alt="mountains" src="/mountain1.svg" class="h-full w-auto max-w-none z-5 relative">
+        <footer class="h-full flex flex-col justify-end">
+            <div class="relative h-[200px] sm:h-[300px] flex flex-row justify-center overflow-hidden">
+                <img id="mountain-large" alt="mountains" src="/mountain1.svg"
+                     class="h-full w-auto max-w-none z-5 relative">
                 <img alt="mountains" src="/mountain2.svg" class="h-1/2 w-auto max-w-none absolute bottom-0 z-10">
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
 </main>
 <Line key="about"/>
-<Line key="projects" />
-<Line key="contact" />
+<Line key="projects"/>
+<Line key="contact"/>
 <script>
-    import {getScrollContainer, easeIn} from "../utils";
+    import {getScrollContainer, easeIn, scrollToSection} from "../utils";
 
-    function init() {
-        const scrollContainer = getScrollContainer();
-        const mountainLarge = document.getElementById('mountain-large');
-        const mapBackground = document.getElementById('map-background');
+    const scrollContainer = getScrollContainer();
+    const logo = document.getElementById('logo');
+    const startButton = document.getElementById('start-button');
+    const mountainLarge = document.getElementById('mountain-large');
+    const mapBackground = document.getElementById('map-background');
 
-        function getScrolledPixels() {
-            if (!scrollContainer) {
-                throw new Error('Element with id=scroll-container not found');
-            }
+    logo.addEventListener('click', () => {
+        scrollContainer.scrollTo({top: 0, behavior: 'smooth'});
+    });
 
-            return scrollContainer.scrollTop;
-        }
+    startButton.addEventListener('click', () => {
+        const sectionId = startButton.getAttribute('data-section-id');
+        const section = document.getElementById(sectionId);
 
-        function getScrolledPercent() {
-            if (!scrollContainer) {
-                throw new Error('Element with id=scroll-container not found');
-            }
+        scrollToSection(scrollContainer, section);
+    });
 
-            const scrollableHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-            const distanceScrolled = getScrolledPixels();
-
-            return (distanceScrolled / scrollableHeight);
-        }
-
-        function setMountainPosition(percent: number) {
-            if (!mountainLarge) {
-                throw new Error('Element with id=mountain-large not found');
-            }
-
-            mountainLarge.style.bottom = `-${100 - percent}%`;
-        }
-
-        function setBackgroundImagePosition(scrollValue: number) {
-            if (!mapBackground) {
-                throw new Error('Element with id=map-background not found');
-            }
-
-            mapBackground.style.backgroundPositionY = `-${scrollValue / 5}px`;
-        }
-
-        function setScrollState() {
-            const scrolledPercent = getScrolledPercent();
-            const scrolledPixels = getScrolledPixels();
-
-            setMountainPosition(Math.floor(easeIn(scrolledPercent) * 100));
-            setBackgroundImagePosition(scrolledPixels);
-        }
-
+    function getScrolledPixels() {
         if (!scrollContainer) {
             throw new Error('Element with id=scroll-container not found');
         }
 
-        scrollContainer.addEventListener('scroll', () => {
-            setScrollState();
-        });
-
-        setMountainPosition(100);
+        return scrollContainer.scrollTop;
     }
 
-    init();
+    function getScrolledPercent() {
+        if (!scrollContainer) {
+            throw new Error('Element with id=scroll-container not found');
+        }
+
+        const scrollableHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        const distanceScrolled = getScrolledPixels();
+
+        return (distanceScrolled / scrollableHeight);
+    }
+
+    function setMountainPosition(percent: number) {
+        if (!mountainLarge) {
+            throw new Error('Element with id=mountain-large not found');
+        }
+
+        mountainLarge.style.bottom = `-${100 - percent}%`;
+    }
+
+    function setBackgroundImagePosition(scrollValue: number) {
+        if (!mapBackground) {
+            throw new Error('Element with id=map-background not found');
+        }
+
+        mapBackground.style.backgroundPositionY = `-${scrollValue / 5}px`;
+    }
+
+    function setScrollState() {
+        const scrolledPercent = getScrolledPercent();
+        const scrolledPixels = getScrolledPixels();
+
+        setMountainPosition(Math.floor(easeIn(scrolledPercent) * 100));
+        setBackgroundImagePosition(scrolledPixels);
+    }
+
+    if (!scrollContainer) {
+        throw new Error('Element with id=scroll-container not found');
+    }
+
+    scrollContainer.addEventListener('scroll', () => {
+        setScrollState();
+    });
+
+    setMountainPosition(100);
 </script>
 </body>
 </html>
