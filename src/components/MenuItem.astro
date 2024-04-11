@@ -13,11 +13,12 @@ const {sectionId} = Astro.props
 
     function onMenuItemClick(menuItem: Element) {
         const sectionId = menuItem.getAttribute('data-section-id');
-        const targetElement = document.getElementById(sectionId);
 
         if (!sectionId) {
             throw new Error('data-section-id attribute is required');
         }
+
+        const targetElement = document.getElementById(sectionId);
 
         if (!scrollContainer) {
             throw new Error('Element with id=scroll-container not found');

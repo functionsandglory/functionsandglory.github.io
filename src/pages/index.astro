@@ -125,7 +125,8 @@ import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
                                 url="https://rubberducktherapy.app"
                                 image="/rubber-duck-therapy-screenshot.png"
                         >
-                            A chatbot built with OpenAI's GPT API that provides the rubber duck debugging technique in the style of <a href="https://en.wikipedia.org/wiki/ELIZA">Eliza.</a>
+                            A chatbot built with OpenAI's GPT API that provides the rubber duck debugging technique in
+                            the style of <a href="https://en.wikipedia.org/wiki/ELIZA">Eliza.</a>
                         </ProjectSummaryObject>
                     </Card>
                 </SectionContent>
@@ -179,13 +180,38 @@ import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
     const mountainLarge = document.getElementById('mountain-large');
     const mapBackground = document.getElementById('map-background');
 
+    if (!logo) {
+        throw new Error('Element with id=logo not found');
+    }
+
     logo.addEventListener('click', () => {
+        if (!scrollContainer) {
+            throw new Error('Element with id=scroll-container not found');
+        }
+
         scrollContainer.scrollTo({top: 0, behavior: 'smooth'});
     });
 
+    if (!startButton) {
+        throw new Error('Element with id=start-button not found');
+    }
+
     startButton.addEventListener('click', () => {
         const sectionId = startButton.getAttribute('data-section-id');
+
+        if (!sectionId) {
+            throw new Error('data-section-id attribute not found on start-button');
+        }
+
         const section = document.getElementById(sectionId);
+
+        if (!section) {
+            throw new Error(`Element with id=${sectionId} not found`);
+        }
+
+        if (!scrollContainer) {
+            throw new Error('Element with id=scroll-container not found');
+        }
 
         scrollToSection(scrollContainer, section);
     });
