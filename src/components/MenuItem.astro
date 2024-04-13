@@ -2,7 +2,7 @@
 const {sectionId} = Astro.props
 ---
 <li role="menuitem" aria-label="" data-menu-item data-menu-item-active="false" data-section-id={sectionId}
-    class="text-stone-300 p-1 border-b-2 transition-colors border-transparent hover:border-stone-300 data-[state-active=true]:border-stone-300">
+    class="text-sm sm:text-md text-stone-300 p-1 border-b-2 transition-colors border-transparent hover:border-stone-300 data-[state-active=true]:border-stone-300">
     <slot/>
 </li>
 <script>

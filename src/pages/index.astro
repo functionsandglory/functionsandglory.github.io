@@ -7,6 +7,7 @@ import SectionContent from "../components/SectionContent.astro";
 import Card from '../components/Card.astro';
 import Line from "../components/Line.astro";
 import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
+import Link from '../components/Link.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -42,15 +43,12 @@ import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Silkscreen:wght@700&display=swap');
     </style>
-    <link
-            rel="stylesheet"
-            href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
-    />
-    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
 <body id="map-background" class="map-background flex flex-col h-screen relative">
 <header class="bg-stone-900 p-4 flex flex-row gap-8 items-center z-10">
-    <button id="logo" class="font-fedora text-2xl text-stone-300 flex-1 sm:flex-none">F(G)</button>
+    <div class="flex-1 sm:flex-none">
+        <button id="logo" class="font-fedora inline text-xl sm:text-2xl text-stone-300">F(G)</button>
+    </div>
     <ul role="menu" class="flex flex-row gap-4">
         <MenuItem sectionId="about">
             About
@@ -68,8 +66,8 @@ import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
         <div class="h-full">
             <div class="flex flex-col gap-12 items-center">
                 <div class="text-center">
-                    <h1 class="font-fedora text-4xl text-stone-300">Functions and Glory</h1>
-                    <h2 class="text-xl text-stone-300 italic">Ventures in Software</h2>
+                    <h1 class="font-fedora text-3xl sm:text-4xl text-stone-300">Functions and Glory</h1>
+                    <h2 class="text-lg sm:text-xl text-stone-300 italic">Ventures in Software</h2>
                 </div>
                 <button id="start-button" data-section-id="about"
                         class="hover:scale-105 active:scale-95 transition-all">
@@ -85,7 +83,7 @@ import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
                 </SectionTitle>
                 <SectionContent>
                     <Card>
-                        <div class="flex flex-col gap-4 text-lg">
+                        <div class="flex flex-col gap-4 text-md sm:text-lg">
                             <p>
                                 I am a web developer with 10+ years of B2B SaaS in the fintech and social ecommerce
                                 spaces.
@@ -125,8 +123,20 @@ import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
                                 url="https://rubberducktherapy.app"
                                 image="/rubber-duck-therapy-screenshot.png"
                         >
-                            A chatbot built with OpenAI's GPT API that provides the rubber duck debugging technique in
-                            the style of <a href="https://en.wikipedia.org/wiki/ELIZA">Eliza.</a>
+                            <p>
+                                A chatbot built with OpenAI's GPT API that provides the rubber duck debugging technique in the style of <Link href="https://en.wikipedia.org/wiki/ELIZA">Eliza.</Link>
+                            </p>
+                        </ProjectSummaryObject>
+                    </Card>
+                    <Card>
+                        <ProjectSummaryObject
+                                title="Lifestyle Medicine Assessment"
+                                url="https://app.apasashealth.com/lifestyle-medicine-assessment"
+                                image="/lifestyle-medicine-assessment-screenshot.png"
+                        >
+                            <p>
+                                A web-app implementation of the lifestyle medicine assessment developed by Stanford University for a client, <Link href="https://apasashealth.com">Apasas Health</Link>
+                            </p>
                         </ProjectSummaryObject>
                     </Card>
                 </SectionContent>
@@ -137,22 +147,20 @@ import ProjectSummaryObject from "../components/ProjectSummaryObject.astro";
                 </SectionTitle>
                 <SectionContent>
                     <Card>
-                        <div class="flex flex-col gap-8">
-                            <div class="flex flex-col gap-4 text-lg">
-                                <p>
-                                    I am available for freelance work.
-                                </p>
-                                <p>
-                                    Email me at: <a class="text-blue-300" href="mailto:functionsandglory@proton.me">functionsandglory@proton.me</a>
-                                </p>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-row justify-center">
+                                <Link href="mailto:functionsandglory@proton.me">functionsandglory@proton.me</Link>
                             </div>
-                            <div class="flex flex-row justify-center gap-4">
-                                <a href="https://github.com/functionsandglory" target="_blank">
+                            <div class="flex flex-row items-center justify-center gap-4">
+                                <Link href="https://github.com/functionsandglory">
                                     <img src="/github-logo.svg" alt="github" class="w-8 h-8">
-                                </a>
-                                <a href="https://x.com/funcsandglory" target="_blank">
-                                    <img src="/x-logo.svg" alt="github" class="w-8 h-8">
-                                </a>
+                                </Link>
+                                <Link href="https://x.com/funcsandglory">
+                                    <img src="/x-logo.svg" alt="X / twitter" class="w-8 h-8">
+                                </Link>
+                                <Link href="https://www.linkedin.com/in/mikejonesab1/">
+                                    <img src="/linkedin-logo.svg" alt="Linkedin" class="w-9 h-9">
+                                </Link>
                             </div>
                         </div>
                     </Card>
