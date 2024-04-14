@@ -911,8 +911,16 @@ video {
     height: 300px;
   }
 
+  .sm\:h-40 {
+    height: 10rem;
+  }
+
   .sm\:w-\[640px\] {
     width: 640px;
+  }
+
+  .sm\:w-40 {
+    width: 10rem;
   }
 
   .sm\:flex-none {
