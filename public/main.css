@@ -613,24 +613,24 @@ video {
   background-color: rgb(41 37 36 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\/assets\/clouds1\.svg\'\)\] {
-  background-image: url('/assets/clouds1.svg');
+.bg-\[url\(\'assets\/clouds1\.svg\'\)\] {
+  background-image: url('assets/clouds1.svg');
 }
 
-.bg-\[url\(\'\/assets\/mountain1\.svg\'\)\] {
-  background-image: url('/assets/mountain1.svg');
+.bg-\[url\(\'assets\/mountain1\.svg\'\)\] {
+  background-image: url('assets/mountain1.svg');
 }
 
-.bg-\[url\(\'\/assets\/mountain2\.svg\'\)\] {
-  background-image: url('/assets/mountain2.svg');
+.bg-\[url\(\'assets\/mountain2\.svg\'\)\] {
+  background-image: url('assets/mountain2.svg');
 }
 
-.bg-\[url\(\'\/assets\/mountain3\.svg\'\)\] {
-  background-image: url('/assets/mountain3.svg');
+.bg-\[url\(\'assets\/mountain3\.svg\'\)\] {
+  background-image: url('assets/mountain3.svg');
 }
 
-.bg-\[url\(\'\/assets\/trees1\.svg\'\)\] {
-  background-image: url('/assets/trees1.svg');
+.bg-\[url\(\'assets\/trees1\.svg\'\)\] {
+  background-image: url('assets/trees1.svg');
 }
 
 .text-center {
