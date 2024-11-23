@@ -42,7 +42,7 @@
                 background-position-x: 0;
             }
             100% {
-                background-position-x: -100%;
+                background-position-x: 2000px;
             }
         }
 
@@ -71,7 +71,7 @@
             --translateZ: -5px;
             --scale: 6;
             transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
-            animation: animateClouds 60s linear infinite, animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
+            animation: animateClouds 90s linear infinite, animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
         }
 
         #layer2 {
@@ -119,7 +119,7 @@
 </head>
 <body class="relative bg-stone-800 text-white">
 <div id="layer-container" class="h-screen bg-stone-200 overflow-hidden">
-    <div id="layer1" class="bg-layer z-[1] bg-[url('assets/clouds1.svg')]"/>
+    <div id="layer1" class="absolute top-0 bottom-0 left-0 right-0 bg-repeat z-[1] bg-[url('assets/clouds1.svg')]"/>
     <div id="layer2" class="bg-layer z-[2] bg-[url('assets/mountain1.svg')]"/>
     <div id="layer3" class="bg-layer z-[3]">
         <div class="relative top-1/3 w-full flex flex-col mx-auto text-center animate-in fade-in duration-1000">

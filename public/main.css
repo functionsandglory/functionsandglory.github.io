@@ -542,6 +542,22 @@ video {
   top: 100%;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
 .z-\[1\] {
   z-index: 1;
 }
@@ -631,6 +647,18 @@ video {
 
 .bg-\[url\(\'assets\/trees1\.svg\'\)\] {
   background-image: url('assets/trees1.svg');
+}
+
+.bg-contain {
+  background-size: contain;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-repeat {
+  background-repeat: repeat;
 }
 
 .text-center {
