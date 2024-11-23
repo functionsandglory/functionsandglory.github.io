@@ -538,12 +538,8 @@ video {
   top: 33.333333%;
 }
 
-.z-40 {
-  z-index: 40;
-}
-
-.z-\[2\] {
-  z-index: 2;
+.top-full {
+  top: 100%;
 }
 
 .z-\[10\] {
@@ -552,6 +548,10 @@ video {
 
 .z-\[1\] {
   z-index: 1;
+}
+
+.z-\[2\] {
+  z-index: 2;
 }
 
 .z-\[3\] {
@@ -564,6 +564,14 @@ video {
 
 .z-\[5\] {
   z-index: 5;
+}
+
+.z-\[6\] {
+  z-index: 6;
+}
+
+.z-\[7\] {
+  z-index: 7;
 }
 
 .mx-auto {
@@ -583,37 +591,24 @@ video {
   height: 1500px;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
+.max-h-screen {
+  max-height: 100vh;
+}
+
 .w-full {
   width: 100%;
-}
-
-.translate-y-\[100\%\] {
-  --tw-translate-y: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-y-\[110\%\] {
-  --tw-translate-y: 110%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-y-\[120\%\] {
-  --tw-translate-y: 120%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-y-\[140\%\] {
-  --tw-translate-y: 140%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-y-\[160\%\] {
-  --tw-translate-y: 160%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
@@ -624,12 +619,25 @@ video {
   flex-direction: column;
 }
 
-.overflow-auto {
-  overflow: auto;
-}
-
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.bg-stone-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(231 229 228 / var(--tw-bg-opacity));
 }
 
 .bg-stone-800 {
@@ -637,18 +645,24 @@ video {
   background-color: rgb(41 37 36 / var(--tw-bg-opacity));
 }
 
-.bg-gradient-to-t {
-  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+.bg-\[url\(\'\/assets\/clouds1\.svg\'\)\] {
+  background-image: url('/assets/clouds1.svg');
 }
 
-.from-sky-50 {
-  --tw-gradient-from: #f0f9ff var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(240 249 255 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+.bg-\[url\(\'\/assets\/mountain1\.svg\'\)\] {
+  background-image: url('/assets/mountain1.svg');
 }
 
-.to-sky-100 {
-  --tw-gradient-to: #e0f2fe var(--tw-gradient-to-position);
+.bg-\[url\(\'\/assets\/mountain2\.svg\'\)\] {
+  background-image: url('/assets/mountain2.svg');
+}
+
+.bg-\[url\(\'\/assets\/mountain3\.svg\'\)\] {
+  background-image: url('/assets/mountain3.svg');
+}
+
+.bg-\[url\(\'\/assets\/trees1\.svg\'\)\] {
+  background-image: url('/assets/trees1.svg');
 }
 
 .text-center {
@@ -690,14 +704,6 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .duration-1000 {
   transition-duration: 1000ms;
 }
@@ -728,14 +734,6 @@ video {
 
 .fade-in {
   --tw-enter-opacity: 0;
-}
-
-.slide-in-from-top-3 {
-  --tw-enter-translate-y: -0.75rem;
-}
-
-.slide-in-from-bottom-3 {
-  --tw-enter-translate-y: 0.75rem;
 }
 
 .duration-1000 {

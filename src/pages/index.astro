@@ -1,8 +1,5 @@
----
-import '../main.css'
----
 <!DOCTYPE html>
-<html lang="en" style="scrollbar-gutter: stable">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Functions & Glory</title>
@@ -31,7 +28,34 @@ import '../main.css'
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Silkscreen:wght@700&display=swap');
     </style>
     <style>
-        .bg {
+        @keyframes animateBGIn {
+            from {
+                transform: translateY(100%) translateZ(var(--translateZ)) scale(var(--scale));
+            }
+            to {
+                transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
+            }
+        }
+
+        @keyframes animateClouds {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: -100%;
+            }
+        }
+
+        :root {
+            --animateBGInDuration: 2s;
+            --animateBGInEase: ease-in-out;
+        }
+
+        #layer-container {
+            perspective: 1px;
+        }
+
+        .bg-layer {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -39,39 +63,66 @@ import '../main.css'
             right: 0;
             background-size: cover;
             background-position-x: center;
-            background-repeat: no-repeat;
+            background-repeat: repeat-x;
             background-attachment: fixed;
         }
 
-        .bg-transition {
-            transition: transform 2s;
+        #layer1 {
+            --translateZ: -5px;
+            --scale: 6;
+            transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
+            animation: animateClouds 60s linear infinite, animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
         }
 
-        #title-container {
-            transform: translateY(110%);
+        #layer2 {
+            --translateZ: -4px;
+            --scale: 5;
+            transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
+            animation: animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
         }
 
-        #bg1 {
-            background-image: url('/assets/trees1.svg');
+        #layer3 {
+            --translateZ: -3px;
+            --scale: 4;
+            transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
+            animation: animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
         }
 
-        #bg2 {
-            background-image: url('/assets/mountain2.svg');
+        #layer4 {
+            --translateZ: -2px;
+            --scale: 3;
+            transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
+            animation: animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
         }
 
-        #bg3 {
-            background-image: url('/assets/mountain3.svg');
+        #layer5 {
+            --translateZ: -1px;
+            --scale: 2.1;
+            transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
+            animation: animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
         }
 
-        #bg4 {
-            background-image: url('/assets/mountain1.svg');
+        #layer6 {
+            --translateZ: 0px;
+            --scale: 1;
+            transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
+            animation: animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
+        }
+
+        #layer7 {
+            --translateZ: 0px;
+            --scale: 1;
+            transform: translateY(0%) translateZ(var(--translateZ)) scale(var(--scale));
+            animation: animateBGIn var(--animateBGInDuration) var(--animateBGInEase);
         }
     </style>
 </head>
-<body class="bg-stone-800 text-white">
-<div class="flex flex-col relative h-screen bg-gradient-to-t to-sky-100 from-sky-50 overflow-hidden">
-    <div id="title-container" class="bg bg-transition z-[2] translate-y-[110%]">
-        <div class="relative top-1/3 bg-transition w-full flex flex-col mx-auto text-center">
+<body class="relative bg-stone-800 text-white">
+<div id="layer-container" class="h-screen bg-stone-200 overflow-hidden">
+    <div id="layer1" class="bg-layer z-[1] bg-[url('/assets/clouds1.svg')]"/>
+    <div id="layer2" class="bg-layer z-[2] bg-[url('/assets/mountain1.svg')]"/>
+    <div id="layer3" class="bg-layer z-[3]">
+        <div class="relative top-1/3 w-full flex flex-col mx-auto text-center animate-in fade-in duration-1000">
             <h1 id="title"
                 class="font-fedora font-bold text-[2rem] md:text-[4rem] text-stone-900">
                 Functions & Glory</h1>
@@ -80,51 +131,30 @@ import '../main.css'
                 Ventures in Software</p>
         </div>
     </div>
-    <div id="bg1" class="bg bg-transition z-[5] translate-y-[160%]"/>
-    <div id="bg2" class="bg bg-transition z-[4] translate-y-[140%]"/>
-    <div id="bg3" class="bg bg-transition z-[3] translate-y-[120%]"/>
-    <div id="bg4" class="bg bg-transition z-[1] translate-y-[100%]"/>
+    <div id="layer4" class="bg-layer z-[4] bg-[url('/assets/mountain3.svg')]"/>
+    <div id="layer5" class="bg-layer z-[5] bg-[url('/assets/mountain2.svg')]"/>
+    <div id="layer6" class="bg-layer z-[6] bg-[url('/assets/trees1.svg')]"/>
+    <!--<div id="layer7" class="relative h-full top-full z-[7] bg-stone-800">-->
+    <!--    hello world-->
+    <!--</div>-->
 </div>
-<div class="relative h-[1500px] bg-stone-800 z-40">
-    content
-</div>
-</body>
 <script>
     history.scrollRestoration = 'manual';
 
-    const titleContainer = document.getElementById('title-container') as HTMLElement;
-    const bg1 = document.getElementById('bg1') as HTMLElement;
-    const bg2 = document.getElementById('bg2') as HTMLElement;
-    const bg3 = document.getElementById('bg3') as HTMLElement;
-    const bg4 = document.getElementById('bg4') as HTMLElement;
+    const layerContainer = document.getElementById('layer-container') as HTMLElement;
+    const layer1 = document.getElementById('layer1') as HTMLElement;
 
-    function transformBG(pixels: number) {
-        titleContainer.style.transform = `translateY(${pixels * 0.5}px)`;
-        bg1.style.transform = `translateY(${0}px)`;
-        bg2.style.transform = `translateY(${pixels * 0.2}px)`;
-        bg3.style.transform = `translateY(${pixels * 0.4}px)`;
-        bg4.style.transform = `translateY(${pixels * 0.6}px)`;
-    }
+    let preventScroll = true;
 
-    function removeBGTransitionClass() {
-        const elements = document.getElementsByClassName('bg-transition');
-
-        Array.from(elements).forEach(element => {
-            element.classList.remove('bg-transition');
-        });
-    }
-
-    window.addEventListener('DOMContentLoaded', function () {
-        transformBG(0);
+    layer1.addEventListener('animationend', () => {
+        preventScroll = false;
     });
 
-    window.addEventListener('beforeunload', function () {
-        window.scrollTo(0, 0);
-    });
-
-    window.addEventListener('scroll', function () {
-        removeBGTransitionClass();
-        transformBG(window.scrollY);
+    layerContainer.addEventListener('scroll', () => {
+        if (preventScroll) {
+            layerContainer.scrollTop = 0;
+        }
     });
 </script>
+</body>
 </html>
