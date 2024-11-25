@@ -1,0 +1,19 @@
+---
+import BackgroundImage from "./background-image.astro";
+const {image} = Astro.props;
+---
+<style>
+    @keyframes bgScroll {
+        0% {
+            background-position-x: 0;
+        }
+        100% {
+            background-position-x: 2000px;
+        }
+    }
+
+    .scroll {
+        animation: bgScroll 90s linear infinite;
+    }
+</style>
+<BackgroundImage image={image} class="bg-[length:auto_100%] bg-repeat scroll" />;

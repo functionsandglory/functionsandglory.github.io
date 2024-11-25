@@ -619,6 +619,14 @@ video {
   overflow: hidden;
 }
 
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .bg-stone-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(231 229 228 / var(--tw-bg-opacity));
@@ -627,6 +635,19 @@ video {
 .bg-stone-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(41 37 36 / var(--tw-bg-opacity));
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-\[length\] {
+  background-color: length;
+}
+
+.bg-\[\] {
+  background-color: ;
 }
 
 .bg-\[url\(\'assets\/clouds1\.svg\'\)\] {
@@ -649,12 +670,36 @@ video {
   background-image: url('assets/trees1.svg');
 }
 
+.bg-\[url\(\'\{\{\}\}\'\)\] {
+  background-image: url('{{}}');
+}
+
 .bg-contain {
   background-size: contain;
 }
 
 .bg-cover {
   background-size: cover;
+}
+
+.bg-\[length\:auto\] {
+  background-size: auto;
+}
+
+.bg-\[length\:auto_100\%\] {
+  background-size: auto 100%;
+}
+
+.bg-fixed {
+  background-attachment: fixed;
+}
+
+.bg-bottom {
+  background-position: bottom;
+}
+
+.bg-center {
+  background-position: center;
 }
 
 .bg-repeat {
