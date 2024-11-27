@@ -2,9 +2,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import * as tailwindcssAnimate from 'tailwindcss-animate';
 
 const config = {
-    content: [
-        'src/**/*.astro',
-    ],
+    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     theme: {
         extend: {
             fontFamily: {

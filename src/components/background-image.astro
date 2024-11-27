@@ -1,14 +1,13 @@
 ---
-const {image, class: className, ...rest} = Astro.props;
+const {imageUrl} = Astro.props;
 
-const imageUrl = `url(${image})`;
+const imageUrlStyle = `url(${imageUrl})`;
 ---
-<style define:vars={{imageUrl}}>
+<style define:vars={{imageUrlStyle}}>
     .bg-image {
-        background-image: var(--imageUrl);
+        background-image: var(--imageUrlStyle);
     }
 </style>
 <div
-    class:list={['h-full bg-image bg-cover bg-center bg-fixed', className]}
-    {...rest}
+    class="h-full bg-image bg-cover bg-center bg-fixed"
 />

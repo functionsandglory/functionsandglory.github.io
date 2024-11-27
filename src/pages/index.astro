@@ -2,6 +2,16 @@
 import Layer from "../components/layer.astro";
 import BackgroundImage from '../components/background-image.astro';
 import ScrollingBackgroundImage from "../components/scrolling-background-image.astro";
+import Section from "../components/section.astro";
+import ContactMethod from "../components/contact-method.astro";
+import Link from "../components/link.astro";
+
+import trees1 from "../assets/trees1.svg";
+import trees2 from "../assets/trees2.svg";
+import mountain1 from "../assets/mountain1.svg";
+import clouds1 from "../assets/clouds1.svg";
+import clouds2 from "../assets/clouds2.svg";
+
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +19,6 @@ import ScrollingBackgroundImage from "../components/scrolling-background-image.a
     <meta charset="UTF-8"/>
     <title>Functions & Glory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="/main.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XGHWEETRM7"></script>
     <script is:inline>
@@ -23,6 +32,7 @@ import ScrollingBackgroundImage from "../components/scrolling-background-image.a
 
         gtag('config', 'G-XGHWEETRM7');
     </script>
+    <script is:inline src="https://kit.fontawesome.com/375dcaf49e.js" crossorigin="anonymous"></script>
     <style>
         @font-face {
             font-family: "SF Fedora";
@@ -32,58 +42,66 @@ import ScrollingBackgroundImage from "../components/scrolling-background-image.a
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Silkscreen:wght@700&display=swap');
     </style>
+    <style>
+        @keyframes preventScroll {
+            from {
+               overflow-y: hidden;
+            }
+            to {
+                overflow-y: hidden;
+            }
+        }
+
+        #layer-container {
+            scrollbar-gutter: stable;
+            animation: preventScroll 2s;
+        }
+    </style>
 </head>
 <body class="relative bg-stone-800 text-white">
-<div id="layer-container" style={{perspective: '1px'}} class="relative h-screen bg-stone-200 overflow-x-hidden overflow-y-auto">
-    <Layer layer={6}>
-        <ScrollingBackgroundImage image="assets/clouds1.svg"/>
-    </Layer>
+<div id="layer-container" style={{perspective: '1px'}}
+     class="relative h-screen bg-stone-200 overflow-x-hidden overflow-y-auto">
     <Layer layer={5}>
-        <BackgroundImage image="assets/mountain1.svg" />
+        <ScrollingBackgroundImage imageUrl={clouds1.src} speed={320}/>
     </Layer>
     <Layer layer={4}>
-        <BackgroundImage image="assets/mountain1.svg" />
+        <BackgroundImage imageUrl={mountain1.src}/>
     </Layer>
     <Layer layer={3}>
-        <div class="relative top-1/3 w-full flex flex-col mx-auto text-center animate-in fade-in duration-1000">
+        <ScrollingBackgroundImage imageUrl={clouds2.src} speed={180}/>
+    </Layer>
+    <Layer layer={2}>
+        <div class="relative leading-tight top-1/3 w-full flex flex-col p-2 mx-auto text-center animate-in fade-in duration-1000">
             <h1 id="title"
-                class="font-fedora font-bold text-[2rem] md:text-[4rem] text-stone-900">
+                class="font-fedora font-bold text-[2.5rem] md:text-[4rem] text-stone-800">
                 Functions & Glory</h1>
             <p id="subtitle"
-               class="text-stone-800 text-[1rem] md:text-[2rem] italic">
+               class="text-stone-800 text-[1.25rem] md:text-[2rem] italic">
                 Ventures in Software</p>
         </div>
     </Layer>
-    <Layer layer={2}>
-        <BackgroundImage image="assets/mountain3.svg" />
-    </Layer>
     <Layer layer={1}>
-        <BackgroundImage image="assets/mountain2.svg" />
+        <BackgroundImage imageUrl={trees2.src}/>
     </Layer>
     <Layer id="layer1" layer={0}>
-        <BackgroundImage image="assets/trees1.svg" />
+        <BackgroundImage imageUrl={trees1.src}/>
     </Layer>
-    <!--<div class="relative h-full top-full bg-stone-800">-->
-    <!--    hello world-->
-    <!--</div>-->
+    <div class="relative flex flex-col items-center top-full bg-stone-800 text-stone-200 py-12 px-1">
+        <Section title="Contact">
+            <ContactMethod>
+                <i slot="icon" class="fa-solid fa-envelope"/>
+                <Link href="mailto:functionsandglory@proton.me">functionsandglory@proton.me</Link>
+            </ContactMethod>
+            <ContactMethod>
+                <i slot="icon" class="fa-brands fa-x-twitter"/>
+                <Link href="https://x.com/funcsandglory">@funcsandglory</Link>
+            </ContactMethod>
+            <ContactMethod>
+                <i slot="icon" class="fa-brands fa-github"/>
+                <Link href="https://github.com/functionsandglory">@functionsandglory</Link>
+            </ContactMethod>
+        </Section>
+    </div>
 </div>
-<script>
-    history.scrollRestoration = 'manual';
-
-    const layerContainer = document.getElementById('layer-container') as HTMLElement;
-    const layer1 = document.getElementById('layer1') as HTMLElement;
-
-    let preventScroll = true;
-
-    layer1.addEventListener('animationend', () => {
-        preventScroll = false;
-    });
-
-    layerContainer.addEventListener('scroll', () => {
-        if (preventScroll) {
-            layerContainer.scrollTop = 0;
-        }
-    });
-</script>
 </body>
 </html>

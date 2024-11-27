@@ -6,7 +6,8 @@
     "astro": "^4.16.7",
     "tailwindcss": "^3.3.2",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "@astrojs/tailwind": "^5.1.2"
   },
   "scripts": {
     "dev": "astro dev",
@@ -14,9 +15,7 @@
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "tailwind-watch": "tailwindcss -i ./src/main.css -o ./public/main.css --watch",
-    "tailwind-build": "tailwindcss -i ./src/main.css -o ./public/main.css"
+    "astro": "astro"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.6.1"

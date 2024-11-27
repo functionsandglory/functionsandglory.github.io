@@ -1,19 +1,22 @@
 ---
-import BackgroundImage from "./background-image.astro";
-const {image} = Astro.props;
+const {imageUrl, speed} = Astro.props;
+
+const imageUrlStyle = `url(${imageUrl})`;
+const speedStyle = `${speed}s`;
 ---
-<style>
+<style define:vars={{imageUrlStyle, speedStyle}}>
     @keyframes bgScroll {
-        0% {
+        from {
             background-position-x: 0;
         }
-        100% {
+        to {
             background-position-x: 2000px;
         }
     }
 
-    .scroll {
-        animation: bgScroll 90s linear infinite;
+    .bg-image {
+        background-image: var(--imageUrlStyle);
+        animation: bgScroll var(--speedStyle) linear infinite;
     }
 </style>
-<BackgroundImage image={image} class="bg-[length:auto_100%] bg-repeat scroll" />;
+<div class="h-full bg-image bg-[length:auto] bg-repeat-x bg-fixed"/>
