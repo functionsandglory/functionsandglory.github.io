@@ -3,15 +3,19 @@ import Layer from "../components/layer.astro";
 import BackgroundImage from '../components/background-image.astro';
 import ScrollingBackgroundImage from "../components/scrolling-background-image.astro";
 import Section from "../components/section.astro";
-import ContactMethod from "../components/contact-method.astro";
+import ListItem from "../components/section-item.astro";
 import Link from "../components/link.astro";
+import IconImage from "../components/icon-image.astro";
+import ScrollingCloud from "../components/scrolling-cloud.astro";
 
-import trees1 from "../assets/trees1.svg";
-import trees2 from "../assets/trees2.svg";
-import mountain1 from "../assets/mountain1.svg";
-import clouds1 from "../assets/clouds1.svg";
-import clouds2 from "../assets/clouds2.svg";
+import trees1Img from "../assets/trees1.svg";
+import trees2Img from "../assets/trees2.svg";
+import mountain1Img from "../assets/mountain1.svg";
+import clouds1Img from "../assets/clouds1.svg";
+import clouds2Img from "../assets/clouds2.svg";
 
+import apasasHealthLogo from "../assets/apasas-health-logo.svg";
+import rubberDuckTherapistImg from "../assets/rubber-duck-therapist.png";
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +49,7 @@ import clouds2 from "../assets/clouds2.svg";
     <style>
         @keyframes preventScroll {
             from {
-               overflow-y: hidden;
+                overflow-y: hidden;
             }
             to {
                 overflow-y: hidden;
@@ -62,45 +66,57 @@ import clouds2 from "../assets/clouds2.svg";
 <div id="layer-container" style={{perspective: '1px'}}
      class="relative h-screen bg-stone-200 overflow-x-hidden overflow-y-auto">
     <Layer layer={5}>
-        <ScrollingBackgroundImage imageUrl={clouds1.src} speed={320}/>
+        <ScrollingBackgroundImage imageUrl={clouds1Img.src} speed={320}/>
     </Layer>
     <Layer layer={4}>
-        <BackgroundImage imageUrl={mountain1.src}/>
+        <BackgroundImage imageUrl={mountain1Img.src}/>
     </Layer>
-    <Layer layer={3}>
-        <ScrollingBackgroundImage imageUrl={clouds2.src} speed={180}/>
-    </Layer>
+    <!--<Layer layer={3}>-->
+    <!--    <ScrollingCloud/>-->
+    <!--</Layer>-->
     <Layer layer={2}>
-        <div class="relative leading-tight top-1/3 w-full flex flex-col p-2 mx-auto text-center animate-in fade-in duration-1000">
+        <div class="relative leading-tight top-1/3 w-full flex flex-col px-5 mx-auto text-center animate-in fade-in duration-1000">
             <h1 id="title"
-                class="font-fedora font-bold text-[2.5rem] md:text-[4rem] text-stone-800">
+                class="font-fedora font-bold text-[2rem] md:text-[4rem] text-stone-800">
                 Functions & Glory</h1>
             <p id="subtitle"
-               class="text-stone-800 text-[1.25rem] md:text-[2rem] italic">
+               class="text-stone-800 text-[1rem] md:text-[2rem] italic">
                 Ventures in Software</p>
         </div>
     </Layer>
     <Layer layer={1}>
-        <BackgroundImage imageUrl={trees2.src}/>
+        <BackgroundImage imageUrl={trees2Img.src}/>
     </Layer>
     <Layer id="layer1" layer={0}>
-        <BackgroundImage imageUrl={trees1.src}/>
+        <BackgroundImage imageUrl={trees1Img.src}/>
     </Layer>
-    <div class="relative flex flex-col items-center top-full bg-stone-800 text-stone-200 py-12 px-1">
-        <Section title="Contact">
-            <ContactMethod>
-                <i slot="icon" class="fa-solid fa-envelope"/>
-                <Link href="mailto:functionsandglory@proton.me">functionsandglory@proton.me</Link>
-            </ContactMethod>
-            <ContactMethod>
-                <i slot="icon" class="fa-brands fa-x-twitter"/>
-                <Link href="https://x.com/funcsandglory">@funcsandglory</Link>
-            </ContactMethod>
-            <ContactMethod>
-                <i slot="icon" class="fa-brands fa-github"/>
-                <Link href="https://github.com/functionsandglory">@functionsandglory</Link>
-            </ContactMethod>
-        </Section>
+    <div class="relative top-full bg-stone-800 text-stone-200 py-12 px-2">
+        <div class="flex flex-col space-y-8 m-auto md:w-max md:max-w-[600px]">
+            <Section title="Projects">
+                <ListItem>
+                    <IconImage slot="icon" src={apasasHealthLogo.src} alt="Apasas Health"/>
+                    <Link href="https://apasashealth.com">Apasas Health</Link>
+                </ListItem>
+                <ListItem>
+                    <IconImage slot="icon" src={rubberDuckTherapistImg.src} alt="Rubber Duck Therapist"/>
+                    <Link href="https://rubberducktherapy.app">Rubber Duck Therapy AI Chatbot</Link>
+                </ListItem>
+            </Section>
+            <Section title="Contact">
+                <ListItem>
+                    <i slot="icon" class="fa-solid fa-envelope"/>
+                    <Link href="mailto:functionsandglory@proton.me">functionsandglory@proton.me</Link>
+                </ListItem>
+                <ListItem>
+                    <i slot="icon" class="fa-brands fa-x-twitter"/>
+                    <Link href="https://x.com/funcsandglory">@funcsandglory</Link>
+                </ListItem>
+                <ListItem>
+                    <i slot="icon" class="fa-brands fa-github"/>
+                    <Link href="https://github.com/functionsandglory">@functionsandglory</Link>
+                </ListItem>
+            </Section>
+        </div>
     </div>
 </div>
 </body>
