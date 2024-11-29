@@ -6,7 +6,6 @@ import Section from "../components/section.astro";
 import ListItem from "../components/section-item.astro";
 import Link from "../components/link.astro";
 import IconImage from "../components/icon-image.astro";
-import ScrollingCloud from "../components/scrolling-cloud.astro";
 
 import trees1Img from "../assets/trees1.svg";
 import trees2Img from "../assets/trees2.svg";
@@ -71,9 +70,9 @@ import rubberDuckTherapistImg from "../assets/rubber-duck-therapist.png";
     <Layer layer={4}>
         <BackgroundImage imageUrl={mountain1Img.src}/>
     </Layer>
-    <!--<Layer layer={3}>-->
-    <!--    <ScrollingCloud/>-->
-    <!--</Layer>-->
+    <Layer layer={3}>
+        <ScrollingBackgroundImage imageUrl={clouds2Img.src} speed={240}/>
+    </Layer>
     <Layer layer={2}>
         <div class="relative leading-tight top-1/3 w-full flex flex-col px-5 mx-auto text-center animate-in fade-in duration-1000">
             <h1 id="title"

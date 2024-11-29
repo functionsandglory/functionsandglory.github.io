@@ -1,5 +1,5 @@
 ---
-const {layer, ...rest} = Astro.props;
+const {layer} = Astro.props;
 const translateZ = `-${layer}px`;
 const scale = layer + 1.05;
 const animateInDuration = "2s";
@@ -22,6 +22,6 @@ const animateInEase = "ease-in-out";
         animation: animateIn var(--animateInDuration) var(--animateInEase);
     }
 </style>
-<div class="layer absolute top-0 bottom-0 right-0 left-0" {...rest}>
+<div class="layer absolute top-0 bottom-0 right-0 left-0 overflow-hidden">
     <slot/>
 </div>
