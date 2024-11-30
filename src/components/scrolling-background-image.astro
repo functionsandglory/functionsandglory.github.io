@@ -1,26 +1,22 @@
 ---
 const {imageUrl, speed} = Astro.props;
 const speedStyle = `${speed}s`;
+
+const imageUrlStyle = `url(${imageUrl})`;
 ---
-<style define:vars={{speedStyle}}>
+<style define:vars={{speedStyle, imageUrlStyle}}>
     @keyframes bgScroll {
         from {
-            transform: translateX(var(--startPos));
+            background-position-x: 0;
         }
         to {
-            transform: translateX(var(--endPos));
+            background-position-x: 10000px;
         }
     }
 
-    .bg-image-1 {
-        animation: bgScroll var(--speedStyle) linear infinite;
-    }
-
-    .bg-image-2 {
+    .bg-image {
+        background-image: var(--imageUrlStyle);
         animation: bgScroll var(--speedStyle) linear infinite;
     }
 </style>
-<img src={imageUrl} alt="scrolling background" style="--startPos: 0; --endPos: 100%"
-     class="bg-image-1 absolute max-w-none min-w-full min-h-full"/>
-<img src={imageUrl} alt="scrolling background" style="--startPos: -100%; --endPos: 0"
-     class="bg-image-2 absolute max-w-none min-w-full min-h-full"/>
+<div class="relative h-full bg-image bg-fixed bg-repeat-x bg-center bg-[length:auto_100%]" />
