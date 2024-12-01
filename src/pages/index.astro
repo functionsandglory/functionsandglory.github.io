@@ -17,7 +17,7 @@ import apasasHealthLogo from "../assets/apasas-health-logo.svg";
 import rubberDuckTherapistImg from "../assets/rubber-duck-therapist.png";
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8"/>
     <title>Functions & Glory</title>
@@ -61,9 +61,9 @@ import rubberDuckTherapistImg from "../assets/rubber-duck-therapist.png";
         }
     </style>
 </head>
-<body class="relative bg-stone-800 text-white">
+<body class="relative h-full bg-stone-800 text-white">
 <div id="layer-container" style={{perspective: '1px'}}
-     class="relative h-screen bg-stone-200 overflow-x-hidden overflow-y-auto">
+     class="relative h-full bg-stone-200 overflow-x-hidden overflow-y-auto">
     <Layer layer={5}>
         <ScrollingBackgroundImage imageUrl={clouds1Img.src} speed={1500}/>
     </Layer>
