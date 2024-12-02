@@ -25,6 +25,7 @@ const transformYStyle = `${100 - (100 * strength)}%`;
     <slot/>
 </div>
 <script>
+    const animate = window.requestAnimationFrame;
     let lastScrollY = -1;
 
     const parallaxLayers = Array.from(document.querySelectorAll('.parallax-layer') as NodeListOf<HTMLElement>
@@ -37,6 +38,7 @@ const transformYStyle = `${100 - (100 * strength)}%`;
         const scrollY = window.scrollY;
 
         if (scrollY === lastScrollY) {
+            animate(animateParallaxLayers);
             return;
         }
 
@@ -46,7 +48,9 @@ const transformYStyle = `${100 - (100 * strength)}%`;
         });
 
         lastScrollY = scrollY;
+
+        animate(animateParallaxLayers);
     }
 
-    window.addEventListener('scroll', animateParallaxLayers);
+    animate(animateParallaxLayers);
 </script>
