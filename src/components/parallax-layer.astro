@@ -3,7 +3,7 @@ const {strength} = Astro.props;
 const animateInDuration = "2s";
 const animateInEase = "ease-in-out";
 
-const transformYStyle = `${100 * strength}%`;
+const transformYStyle = `${100 - (100 * strength)}%`;
 ---
 <style define:vars={{animateInDuration, animateInEase, transformYStyle}}>
     @keyframes animateIn {
@@ -33,14 +33,12 @@ const transformYStyle = `${100 * strength}%`;
 
     function animateParallaxLayers(scrollY: number) {
         parallaxLayers.forEach((layer) => {
-            const transformY = -1 * scrollY * layer.strength;
+            const transformY = scrollY * layer.strength;
             layer.node.style.transform = `translate3d(0, ${transformY}px, 0)`;
         });
     }
 
     window.addEventListener("scroll", (event) => {
-        window.requestAnimationFrame(() => {
-            animateParallaxLayers(window.scrollY);
-        });
-    });
+        animateParallaxLayers(window.scrollY);
+    }, {passive: true});
 </script>
