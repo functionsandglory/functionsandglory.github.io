@@ -1,0 +1,42 @@
+---
+const {strength} = Astro.props;
+const animateInDuration = "2s";
+const animateInEase = "ease-in-out";
+
+const transformYStyle  = `${100 - (100 * strength)}%`;
+---
+<style define:vars={{animateInDuration, animateInEase, transformYStyle}}>
+    @keyframes animateIn {
+        from {
+            transform: translateY(var(--transformYStyle));
+        }
+        to {
+            transform: translateY(0%);
+        }
+    }
+
+    .parallax-layer {
+        transform: translateY(0%);
+        animation: animateIn var(--animateInDuration) var(--animateInEase);
+    }
+</style>
+<div class="parallax-layer absolute top-0 bottom-0 right-0 left-0 overflow-hidden" data-parallax-layer-strength={strength}>
+    <slot/>
+</div>
+<script>
+    const parallaxLayers = Array.from(document.querySelectorAll('.parallax-layer') as NodeListOf<HTMLElement>
+    ).map((node) => ({
+        node,
+            strength: Number(node.getAttribute('data-parallax-layer-strength'))
+    }));
+
+    document.addEventListener('scroll', () => {
+        window.requestAnimationFrame(() => {
+            parallaxLayers.forEach((layer) => {
+                const transformY = window.scrollY * layer.strength;
+                layer.node.style.transform = `translateY(${transformY}px)`;
+            });
+        });
+    });
+
+</script>
