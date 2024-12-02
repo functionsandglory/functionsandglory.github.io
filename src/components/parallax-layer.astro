@@ -3,7 +3,7 @@ const {strength} = Astro.props;
 const animateInDuration = "2s";
 const animateInEase = "ease-in-out";
 
-const transformYStyle = `${100 - (100 * strength)}%`;
+const transformYStyle = `${100 * strength}%`;
 ---
 <style define:vars={{animateInDuration, animateInEase, transformYStyle}}>
     @keyframes animateIn {
@@ -25,28 +25,22 @@ const transformYStyle = `${100 - (100 * strength)}%`;
     <slot/>
 </div>
 <script>
-    let lastScrollY = -1;
-
     const parallaxLayers = Array.from(document.querySelectorAll('.parallax-layer') as NodeListOf<HTMLElement>
     ).map((node) => ({
         node,
         strength: Number(node.getAttribute('data-parallax-layer-strength'))
     }));
 
-    function animateParallaxLayers() {
-        const scrollY = Math.round(window.scrollY);
-
-        if (scrollY === lastScrollY) {
-            return;
-        }
-
+    function animateParallaxLayers(scrollY: number) {
         parallaxLayers.forEach((layer) => {
-            const transformY = window.scrollY * layer.strength;
+            const transformY = -1 * scrollY * layer.strength;
             layer.node.style.transform = `translate3d(0, ${transformY}px, 0)`;
         });
-
-        lastScrollY = scrollY;
     }
 
-    window.addEventListener('scroll', animateParallaxLayers);
+    window.addEventListener("scroll", (event) => {
+        window.requestAnimationFrame(() => {
+            animateParallaxLayers(window.scrollY);
+        });
+    });
 </script>

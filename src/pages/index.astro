@@ -62,17 +62,17 @@ import rubberDuckTherapistImg from "../assets/rubber-duck-therapist.png";
     </style>
 </head>
 <body class="relative h-full bg-stone-800 text-white">
-<div class="relative h-full bg-stone-200">
-    <ParallaxLayer strength={0.9}>
+<div class="fixed top-0 left-0 right-0 h-full bg-stone-200 z-10">
+    <ParallaxLayer strength={0.1}>
         <ScrollingBackgroundImage imageUrl={clouds1Img.src} speed={1500}/>
     </ParallaxLayer>
-    <ParallaxLayer strength={0.8}>
+    <ParallaxLayer strength={0.2}>
         <BackgroundImage imageUrl={mountain1Img.src}/>
     </ParallaxLayer>
-    <ParallaxLayer strength={0.7}>
+    <ParallaxLayer strength={0.3}>
         <ScrollingBackgroundImage imageUrl={clouds2Img.src} speed={1000}/>
     </ParallaxLayer>
-    <ParallaxLayer strength={0.7}>
+    <ParallaxLayer strength={0.4}>
         <div class="relative h-full animate-in fade-in duration-1000">
             <div class="relative leading-tight top-1/2 -translate-y-1/2 w-3/4 flex flex-col mx-auto text-center">
                 <h1 id="title"
@@ -84,14 +84,14 @@ import rubberDuckTherapistImg from "../assets/rubber-duck-therapist.png";
             </div>
         </div>
     </ParallaxLayer>
-    <ParallaxLayer strength={0.4}>
+    <ParallaxLayer strength={0.5}>
         <BackgroundImage imageUrl={trees2Img.src}/>
     </ParallaxLayer>
-    <ParallaxLayer strength={0}>
+    <ParallaxLayer strength={1}>
         <BackgroundImage imageUrl={trees1Img.src}/>
     </ParallaxLayer>
 </div>
-<div class="relative bg-stone-800 text-stone-200">
+<div class="relative top-full bg-stone-800 text-stone-200 z-20">
     <div class="flex flex-col space-y-8 m-auto w-3/4 max-w-screen-sm md:w-max py-12">
         <Section title="Projects">
             <ListItem>
