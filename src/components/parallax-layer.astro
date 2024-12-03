@@ -30,7 +30,8 @@ const transformYStyle = `${100 * strength}%`;
 
     const lenis = new Lenis({
         autoRaf: true,
-        //syncTouch: true,
+        syncTouch: true,
+        lerp: 1,
     });
 
     const parallaxLayers = Array.from(document.querySelectorAll('.parallax-layer') as NodeListOf<HTMLElement>
