@@ -8,7 +8,7 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.3",
     "@astrojs/tailwind": "^5.1.2",
-    "motion": "^11.12.0"
+    "lenis": "1.1.18"
   },
   "scripts": {
     "dev": "astro dev",
