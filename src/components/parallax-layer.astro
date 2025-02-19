@@ -1,5 +1,5 @@
 ---
-const {strength} = Astro.props;
+const {strength, zIndex} = Astro.props;
 const animateInDuration = "2s";
 const animateInEase = "ease-in-out";
 
@@ -16,6 +16,7 @@ const transformYStyle = `${100 * strength}%`;
     }
 
     .parallax-layer {
+        z-index: var(--zIndex);
         transform: translate3d(0, 0, 0);
         animation: animateIn var(--animateInDuration) var(--animateInEase);
     }
